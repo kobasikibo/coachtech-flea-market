@@ -13,18 +13,15 @@ return new class extends Migration
     {
         Schema::create('addresses', function (Blueprint $table) {
             $table->id();
-            $table->string('postcord', 10)->nullable();
-            $table->string('address')->nullable();
-            $table->string('building', 100)->nullable();
+            $table->string('postal_cord', 8)->notNullable();
+            $table->string('address')->notNullable();
+            $table->string('building', 100)->notNullable();
             $table->timestamps();
         });
     }
 
-    /**
-     * Reverse the migrations.
-     */
     public function down(): void
     {
-        Schema::dropIfExists('profiles');
+        Schema::dropIfExists('addresses');
     }
 };

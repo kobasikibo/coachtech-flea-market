@@ -20,10 +20,10 @@ class RegisterController extends Controller
     {
         $validatedData = $request->validated();
 
-        return $this->createNewUser->create($validatedData);
+        $user = $this->createNewUser->create($validatedData);
 
         Auth::login($user);
 
-        return redirect('/mypage/profile');
+        return redirect()->route('profile.edit')->with('user', $user);
     }
 }

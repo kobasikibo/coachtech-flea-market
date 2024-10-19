@@ -19,7 +19,9 @@
                 <div class="error">{{ $message }}</div>
             @enderror
         </div>
-        <button type="submit">ログイン</button>
+        <button type="submit">ログインする</button>
     </form>
+
+    <a href="{{ route('register') }}">会員登録はこちら</a>
 </div>
 @endsection
