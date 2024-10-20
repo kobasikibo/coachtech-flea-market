@@ -1,22 +1,23 @@
 @extends('layouts.app')
 
+@section('css')
+    <link rel="stylesheet" href="{{ asset('css/item.css') }}" />
+@endsection
+
 @section('content')
-<div class="container">
-    <h1>ホーム</h1>
 
-    @auth
-        <div>
-            <a href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">ログアウト</a>
-        </div>
-
-        <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+@auth
+    <div>
+        <form action="{{ route('logout') }}" method="POST" class="logout-form">
             @csrf
+            <button type="submit" class="btn-logout">ログアウト</button>
         </form>
-    @else
-        <div>
-            <a href="{{ route('login') }}">ログインする</a>
-        </div>
-    @endauth
+    </div>
 
-</div>
+@else
+    <div>
+        <a href="{{ route('login') }}" class="btn-login">ログインする</a>
+    </div>
+@endauth
+
 @endsection

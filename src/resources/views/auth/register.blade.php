@@ -1,46 +1,53 @@
 @extends('layouts.app')
 
+@section('css')
+    <link rel="stylesheet" href="{{ asset('css/register.css') }}" />
+@endsection
+
 @section('content')
-<div class="container">
-    <h2>会員登録</h2>
-    <form action="{{ route('register') }}" method="POST" novalidate>
-        @csrf
+<h2>会員登録</h2>
 
-        <div class="form-group">
-            <label for="name">ユーザー名</label>
-            <input type="text" name="name" id="name" class="form-control" value="{{ old('name') }}" required>
-            @error('name')
-                <small class="text-danger">{{ $message }}</small>
-            @enderror
-        </div>
+<form action="{{ route('register') }}" method="POST" novalidate>
+    @csrf
 
-        <div class="form-group">
-            <label for="email">メールアドレス</label>
-            <input type="email" name="email" id="email" class="form-control" value="{{ old('email') }}" required>
-            @error('email')
-                <small class="text-danger">{{ $message }}</small>
-            @enderror
-        </div>
+    <div class="form-group">
+        <label for="name">ユーザー名</label>
+        <input type="text" name="name" class="form-input" value="{{ old('name') }}" required>
 
-        <div class="form-group">
-            <label for="password">パスワード</label>
-            <input type="password" name="password" id="password" class="form-control" required>
-            @error('password')
-                <small class="text-danger">{{ $message }}</small>
-            @enderror
-        </div>
+        @error('name')
+            <div class="error-message">{{ $message }}</div>
+        @enderror
+    </div>
 
-        <div class="form-group">
-            <label for="password_confirmation">確認用パスワード</label>
-            <input type="password" name="password_confirmation" id="password_confirmation" class="form-control" required>
-            @error('password_confirmation')
-                <small class="text-danger">{{ $message }}</small>
-            @enderror
-        </div>
+    <div class="form-group">
+        <label for="email">メールアドレス</label>
+        <input type="email" name="email" class="form-input" value="{{ old('email') }}" required>
 
-        <button type="submit" class="btn btn-primary">登録する</button>
-    </form>
+        @error('email')
+            <div class="error-message">{{ $message }}</div>
+        @enderror
+    </div>
 
-    <a href="{{ route('login') }}">ログインはこちら</a>
-</div>
+    <div class="form-group">
+        <label for="password">パスワード</label>
+        <input type="password" name="password" class="form-input" required>
+
+        @error('password')
+            <div class="error-message">{{ $message }}</div>
+        @enderror
+    </div>
+
+    <div class="form-group">
+        <label for="password_confirmation">確認用パスワード</label>
+        <input type="password" name="password_confirmation" class="form-input" required>
+
+        @error('password_confirmation')
+            <div class="error-message">{{ $message }}</div>
+        @enderror
+    </div>
+
+    <button type="submit" class="btn">登録する</button>
+</form>
+
+<a href="{{ route('login') }}">ログインはこちら</a>
 @endsection
