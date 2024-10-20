@@ -17,4 +17,12 @@ class ProfileRequest extends FormRequest
             'profile_image' => 'nullable|image|mimes:jpeg,png',
         ];
     }
+
+    public function messages(): array
+    {
+        return [
+            'profile_image.image' => 'プロフィール画像は画像ファイルを選択してください',
+            'profile_image.mimes' => 'プロフィール画像はJPEGまたはPNG形式である必要があります',
+        ];
+    }
 }

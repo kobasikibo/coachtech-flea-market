@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('addresses', function (Blueprint $table) {
             $table->id();
-            $table->string('postal_cord', 8)->notNullable();
+            $table->string('zip_code', 8)->notNullable();
             $table->string('address')->notNullable();
             $table->string('building', 100)->notNullable();
             $table->timestamps();

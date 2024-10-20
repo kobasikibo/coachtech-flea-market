@@ -10,13 +10,8 @@ class Address extends Model
     use HasFactory;
 
     protected $fillable = [
-        'postal_cord',
+        'zip_cord',
         'address',
         'building'
     ];
-
-    public function user()
-    {
-        return $this->hasOne(User::class);
-    }
 }

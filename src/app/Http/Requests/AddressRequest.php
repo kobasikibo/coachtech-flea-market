@@ -15,9 +15,20 @@ class AddressRequest extends FormRequest
     {
         return [
             'name' => 'required',
-            'postal_code' => 'required|regex:/^\d{3}-\d{4}$/', // ハイフンありの8文字
+            'zip_code' => 'required|regex:/^\d{3}-\d{4}$/',
             'address' => 'required',
-            'building_name' => 'required',
+            'building' => 'required',
+        ];
+    }
+
+    public function messages(): array
+    {
+        return [
+            'name.required' => 'お名前を入力してください',
+            'zip_code.required' => '郵便番号を入力してください',
+            'zip_code.regex' => '郵便番号は「000-0000」の形式で入力してください',
+            'address.required' => '住所を入力してください',
+            'building.required' => '建物名を入力してください',
         ];
     }
 }

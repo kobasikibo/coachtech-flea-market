@@ -43,11 +43,16 @@ class ProfileController extends Controller
         $user->save();
 
         // 住所情報の更新
-        $address = $user->address;
-        $address->postal_cord = $addressRequest->input('postal_cord');
+        $address = $user->address ?? new Address();
+
+        $address->zip_code = $addressRequest->input('zip_code');
         $address->address = $addressRequest->input('address');
         $address->building = $addressRequest->input('building');
         $address->save();
+
+        // ユーザーに住所IDを関連付け
+        $user->address_id = $address->id;
+        $user->save();
 
         return redirect('/');
     }
