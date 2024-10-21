@@ -5,7 +5,7 @@
 @endsection
 
 @section('content')
-<h2>会員登録</h2>
+<h1>会員登録</h1>
 
 <form action="{{ route('register') }}" method="POST" novalidate>
     @csrf

@@ -6,11 +6,12 @@ use App\Http\Controllers\Auth\RegisterController;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\ProfileController;
 
-Route::get('/', [ItemController::class, 'index'])->name('item');
+Route::get('/', [ItemController::class, 'index'])->name('item.index');
 Route::post('/register', [RegisterController::class, 'register'])->name('auth.register');
 Route::post('/login', [LoginController::class, 'login'])->name('auth.login');
 
 Route::middleware('auth')->group(function () {
+    Route::get('/mypage', [ProfileController::class, 'show'])->name('mypage.show');
     Route::get('/mypage/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::put('/mypage/profile', [ProfileController::class, 'update'])->name('profile.update');
 });

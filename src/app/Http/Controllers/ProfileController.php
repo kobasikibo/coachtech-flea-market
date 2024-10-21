@@ -12,13 +12,18 @@ use Illuminate\Support\Facades\Storage;
 
 class ProfileController extends Controller
 {
-    public function edit()
+    public function show()
     {
         $user = Auth::user();
 
-        if (!Auth::check()) {
-            return redirect('/login')->with('error', 'ログインしてください');
-        }
+        return view('profile.show', [
+            'user' => $user,
+        ]);
+    }
+
+    public function edit()
+    {
+        $user = Auth::user();
 
         $address = $user->address ?? null;
 

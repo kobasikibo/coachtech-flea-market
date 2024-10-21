@@ -22,6 +22,12 @@
     justify-content: flex-start;
 }
 
+.header__right-links {
+    display: flex;  /* 横並びにする */
+    align-items: center; /* 縦方向の中央揃え */
+    gap: 15px; /* アイテム間のスペースを調整 */
+}
+
 .header__logo img {
     max-width: 100%;
     height: auto;

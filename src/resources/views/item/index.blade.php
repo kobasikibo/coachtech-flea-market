@@ -23,6 +23,7 @@
         @else
             <a href="{{ route('login') }}" class="link-login">ログイン</a>
         @endauth
+        <a href="{{ route('mypage.show') }}" class="link-mypage">マイページ</a>
     </div>
 @endsection
 
