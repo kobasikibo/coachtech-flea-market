@@ -21,13 +21,30 @@
                 </a>
             </div>
 
-            <div class="header__container">
-                @yield('header-center')
-            </div>
+            @if (!in_array(request()->route()->getName(), ['login', 'register']))
+                <div class="header__container">
+                    <div class="header__center">
+                        <form class="search-form" action="/search" method="GET">
+                            <input type="text" name="query" placeholder="なにをお探しですか？">
+                            <button type="submit">検索</button>
+                        </form>
+                    </div>
+                </div>
 
-            <div class="header__container">
-                @yield('header-right')
-            </div>
+                <div class="header__container">
+                    <div class="header__right-links">
+                        @auth
+                            <form action="{{ route('logout') }}" method="POST" class="logout-form">
+                                @csrf
+                                <button type="submit" class="link-style-button">ログアウト</button>
+                            </form>
+                        @else
+                            <a href="{{ route('login') }}" class="link-login">ログイン</a>
+                        @endauth
+                        <a href="{{ route('mypage.show') }}" class="link-mypage">マイページ</a>
+                    </div>
+                </div>
+            @endif
         </div>
     </header>
 
