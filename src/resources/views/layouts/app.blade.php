@@ -26,13 +26,12 @@
                     <div class="header__center">
                         <form class="search-form" action="/search" method="GET">
                             <input type="text" name="query" placeholder="なにをお探しですか？">
-                            <button type="submit">検索</button>
                         </form>
                     </div>
                 </div>
 
                 <div class="header__container">
-                    <div class="header__right-links">
+                    <div class="header__links">
                         @auth
                             <form action="{{ route('logout') }}" method="POST" class="logout-form">
                                 @csrf
@@ -42,6 +41,7 @@
                             <a href="{{ route('login') }}" class="link-login">ログイン</a>
                         @endauth
                         <a href="{{ route('mypage.show') }}" class="link-mypage">マイページ</a>
+                        <a href="{{ route('item.create') }}" class="link-sell">出品</a>
                     </div>
                 </div>
             @endif

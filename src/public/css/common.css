@@ -22,9 +22,9 @@
     justify-content: flex-start;
 }
 
-.header__right-links {
-    display: flex;  /* 横並びにする */
-    align-items: center; /* 縦方向の中央揃え */
+.header__links {
+    display: flex;
+    align-items: center;
     gap: 15px; /* アイテム間のスペースを調整 */
 }
 
@@ -37,6 +37,14 @@
     display: flex;
     justify-content: center;
     gap: 10px;
+}
+
+.search-form input {
+    width: 300px;
+    padding: 10px;
+    font-size: 16px;
+    border: 1px solid rgba(0, 0, 0, 1);
+    border-radius: 5px;
 }
 
 .link-style-button {
@@ -55,14 +63,25 @@
     border-radius: 5px;
 }
 
-.header__right-links a {
+.link-mypage,
+.link-login {
     text-decoration: none;
     color: rgba(255, 255, 255, 1);
     padding: 10px 15px;
     transition: background-color 0.3s;
 }
 
-.header__right-links a:hover {
+.link-login:hover,
+.link-mypage:hover {
     background-color: rgba(255, 255, 255, 0.2);
     border-radius: 5px;
+}
+
+.link-sell {
+    text-decoration: none;
+    color: rgba(0, 0, 0, 1);
+    background-color: rgba(255, 255, 255, 1);
+    border-radius: 5px;
+    padding: 10px 20px;
+    transition: background-color 0.3s;
 }

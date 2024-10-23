@@ -14,4 +14,7 @@ Route::middleware('auth')->group(function () {
     Route::get('/mypage', [ProfileController::class, 'show'])->name('mypage.show');
     Route::get('/mypage/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::put('/mypage/profile', [ProfileController::class, 'update'])->name('profile.update');
+
+    Route::get('/sell', [ItemController::class, 'create'])->name('item.create');
+    Route::post('/sell', [ItemController::class, 'store'])->name('item.store');
 });
