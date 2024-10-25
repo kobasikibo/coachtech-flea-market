@@ -35,7 +35,7 @@
             @foreach ($categories as $category)
                 <div class="category-item">
                     <input type="checkbox" name="categories[]" value="{{ $category->id }}" id="category-{{ $loop->index }}" class="category-checkbox">
-                    <label class="category-label" for="category-{{ $loop->index }}">{{ $category }}</label>
+                    <label class="category-label" for="category-{{ $loop->index }}">{{ $category->name }}</label>
                 </div>
             @endforeach
         </div>
