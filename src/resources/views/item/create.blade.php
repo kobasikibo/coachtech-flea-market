@@ -58,6 +58,11 @@
             <input type="text" name="name" class="name-input" required>
         </div>
 
+        <div class="brand">
+            <label class="brand-label">ブランド名</label>
+            <input type="text" name="brand" class="brand-input" placeholder="例: Nike" >
+        </div>
+
         <div class="description">
             <label class="description-label">商品の説明</label>
             <textarea name="description" class="description-textarea" required maxlength="255"></textarea>
