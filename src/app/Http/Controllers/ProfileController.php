@@ -3,10 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
-use App\Http\Requests\ProfileRequest;
-use App\Http\Requests\AddressRequest;
 use App\Models\User;
 use App\Models\Address;
+use App\Http\Requests\ProfileRequest;
+use App\Http\Requests\AddressRequest;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
 

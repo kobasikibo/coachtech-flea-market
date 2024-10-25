@@ -5,7 +5,6 @@
 <?php $__env->startSection('content'); ?>
 
     <div class="profile-container">
-        <!-- プロフィール画像 -->
         <div class="profile-image <?php echo e($user->profile_image ? '' : 'default-profile'); ?>">
             <?php if($user->profile_image): ?>
                 <img src="<?php echo e(asset('storage/' . $user->profile_image)); ?>" alt="プロフィール画像">
@@ -14,7 +13,6 @@
             <?php endif; ?>
         </div>
 
-        <!-- ユーザー名 -->
         <div class="profile-info">
             <h2><?php echo e($user->name); ?></h2>
             <a href="<?php echo e(route('profile.edit')); ?>" class="btn">プロフィールを編集</a>

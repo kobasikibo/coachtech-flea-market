@@ -5,21 +5,22 @@
     text-align: left; /* テキストを左寄せにする */
 }
 
+/* 仮　 */
 h1 {
     text-align: center;
 }
 
-h2 {color: rgba(95, 95, 95, 1);
+.section-title {color: rgba(95, 95, 95, 1);
     border-bottom: 1px solid rgba(95, 95, 95, 1);
 }
 
 /* 各入力フォームのスタイル */
-.image-preview-container,
-.category-selection,
-.item-condition,
-.item-name,
-.item-description,
-.item-price {
+.image-container,
+.category-list,
+.condition,
+.name,
+.description,
+.price {
     width: 100%; /* 幅を100%に設定 */
     margin-bottom: 20px; /* 下の要素との間に余白を追加 */
     box-sizing: border-box; /* ボックスモデルの計算にパディングとボーダーを含める */
@@ -29,22 +30,6 @@ h2 {color: rgba(95, 95, 95, 1);
 .label {
     display: block; /* ラベルをブロック要素にする */
     margin-bottom: 5px; /* ラベルと入力フィールドの間に余白を追加 */
-}
-
-/* ボタンのスタイル */
-.submit-button {
-    width: 100%; /* 幅を100%に設定 */
-    padding: 10px; /* ボタンのパディング */
-    background-color: rgba(255, 86, 85, 1); /* ボタンの背景色 */
-    color: white; /* ボタンの文字色 */
-    border: none; /* ボタンの枠をなしに */
-    border-radius: 5px; /* ボタンの角を丸く */
-    cursor: pointer; /* カーソルをポインターに */
-    transition: background-color 0.3s; /* 背景色の変化にアニメーションを追加 */
-}
-
-.submit-button:hover {
-    background-color: rgba(255, 86, 85, 0.8); /* ホバー時の背景色 */
 }
 
 /* 入力フィールドのスタイル */
@@ -59,7 +44,7 @@ h2 {color: rgba(95, 95, 95, 1);
     box-sizing: border-box; /* ボックスモデルの計算にパディングとボーダーを含める */
 }
 
-.image-preview-container {
+.image-container {
     position: relative;
     width: auto;
     height: 150px;
@@ -71,14 +56,14 @@ h2 {color: rgba(95, 95, 95, 1);
     border-radius: 8px;
 }
 
-.image-preview-container .image-preview {
+.image-container .image {
     max-width: 100%;
     max-height: 100%;
     object-fit: contain; /* アスペクト比を保ちながら収める */
     display: none; /* 初期状態で非表示 */
 }
 
-.image-preview-container .image-preview.show {
+.image-container .image.show {
     display: block; /* 'show'クラスが付与された場合に表示 */
 }
 
@@ -107,17 +92,17 @@ h2 {color: rgba(95, 95, 95, 1);
 }
 
 .category-item {
-    display: inline-block; /* インラインブロックにする */
-    margin: 10px; /* アイテム間の余白 */
+    display: inline-block;
+    margin: 10px;
 }
 
-.categories {
+.category-label {
     display: inline-block; /* インラインブロックにすることで横並びに */
-    background-color: white; /* カテゴリ名の背景色 */
-    color: rgba(255, 86, 85, 1); /* カテゴリ名の文字色 */
+    background-color: white;
+    color: rgba(255, 86, 85, 1);
     padding: 3px 15px; /* カテゴリ名の内側の余白 */
-    border: 2px solid rgba(255, 86, 85, 1); /* カテゴリ名の枠 */
-    border-radius: 20px; /* カテゴリ名の角を丸く */
+    border: 2px solid rgba(255, 86, 85, 1);
+    border-radius: 20px;
     cursor: pointer;
     text-align: center;
     transition: background-color 0.3s, color 0.3s; /* 背景色と文字色の遷移効果 */
@@ -125,18 +110,30 @@ h2 {color: rgba(95, 95, 95, 1);
 }
 
 .category-checkbox {
-    display: none; /* チェックボックスを非表示 */
+    display: none;
 }
 
-.category-checkbox:checked + .categories {
-    background-color: rgba(255, 86, 85, 1); /* 選択時の背景色 */
-    color: white; /* 選択時の文字色 */
+.category-checkbox:checked + .category-label {
+    background-color: rgba(255, 86, 85, 1);
+    color: white;
 }
 
-.categories:hover {
-    background-color: rgba(255, 86, 85, 0.1); /* ホバー時の背景色 */
+.category-label:hover {
+    background-color: rgba(255, 86, 85, 0.1);
 }
 
 .submit-button {
+    width: 100%;
+    margin: 60px auto;
+    padding: 10px;
+    background-color: rgba(255, 86, 85, 1);
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s; /* 背景色の変化にアニメーションを追加 */
+}
 
+.submit-button:hover {
+    background-color: rgba(255, 86, 85, 0.8);
 }

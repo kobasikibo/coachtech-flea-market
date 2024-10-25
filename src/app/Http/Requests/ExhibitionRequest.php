@@ -6,26 +6,18 @@ use Illuminate\Foundation\Http\FormRequest;
 
 class ExhibitionRequest extends FormRequest
 {
-    /**
-     * Determine if the user is authorized to make this request.
-     */
     public function authorize(): bool
     {
         return true;
     }
 
-    /**
-     * Get the validation rules that apply to the request.
-     *
-     * @return array<string, \Illuminate\Contracts\Validation\ValidationRule|array<mixed>|string>
-     */
     public function rules(): array
     {
         return [
             'name' => 'required',
             'description' => 'required|max:255',
             'image' => 'required|image|mimes:jpeg,png',
-            'categories' => 'required',
+            'category_ids' => 'required|array',
             'condition' => 'required',
             'price' => 'required|numeric|min:0',
         ];
@@ -40,7 +32,8 @@ class ExhibitionRequest extends FormRequest
             'image.required' => '商品画像は必須です。',
             'image.image' => '画像ファイルでなければなりません。',
             'image.mimes' => '画像の形式はjpegまたはpngである必要があります。',
-            'categories.required' => 'カテゴリは必須です。',
+            'category_ids.required' => 'カテゴリは必須です。',
+            'category_ids.array' => 'カテゴリが正しく選択されていません。再度お試しください。',
             'condition.required' => '商品の状態は必須です。',
             'price.required' => '価格は必須です。',
             'price.numeric' => '価格は数値でなければなりません。',

@@ -7,7 +7,6 @@
 @section('content')
 
     <div class="profile-container">
-        <!-- プロフィール画像 -->
         <div class="profile-image {{ $user->profile_image ? '' : 'default-profile' }}">
             @if($user->profile_image)
                 <img src="{{ asset('storage/' . $user->profile_image) }}" alt="プロフィール画像">
@@ -16,7 +15,6 @@
             @endif
         </div>
 
-        <!-- ユーザー名 -->
         <div class="profile-info">
             <h2>{{ $user->name }}</h2>
             <a href="{{ route('profile.edit') }}" class="btn">プロフィールを編集</a>
