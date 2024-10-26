@@ -16,6 +16,7 @@ class Item extends Model
         'image_path',
         'condition',
         'price',
+        'user_id'
     ];
 
     public function categories()

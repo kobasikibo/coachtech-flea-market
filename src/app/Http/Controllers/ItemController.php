@@ -34,6 +34,7 @@ class ItemController extends Controller
             'image_path' => $path,
             'condition' => $request->condition,
             'price' => $request->price,
+            'user_id' => Auth::id(),
         ]);
 
         $item->categories()->attach($request->category_ids);
