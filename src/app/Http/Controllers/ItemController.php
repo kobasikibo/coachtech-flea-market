@@ -5,14 +5,25 @@ namespace App\Http\Controllers;
 use App\Models\Item;
 use App\Models\Category;
 use App\Http\Requests\ExhibitionRequest;
+use App\Http\Requests\SearchRequest;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
 
 class ItemController extends Controller
 {
-    public function index()
+    public function index(SearchRequest $request)
     {
-        return view('item.index');
+        $query = $request->get('query');
+        $userId = Auth::id();
+
+        // 商品の取得
+        $items = Item::when($query, function ($queryBuilder) use ($query) {
+            return $queryBuilder->where('name', 'like', '%' . $query . '%');
+        })
+        ->where('user_id', '!=', $userId) // 自分が出品した商品は除外
+        ->get();
+
+        return view('item.index', compact('items'));
     }
 
     public function create()

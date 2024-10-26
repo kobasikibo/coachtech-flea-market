@@ -7,7 +7,6 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title><?php echo $__env->yieldContent('title', 'coachtechフリマ'); ?></title>
     <link rel="stylesheet" href="<?php echo e(asset('css/sanitize.css')); ?>">
-    <link rel="stylesheet" href="<?php echo e(asset('css/app.css')); ?>">
     <link rel="stylesheet" href="<?php echo e(asset('css/common.css')); ?>">
     <?php echo $__env->yieldContent('css'); ?>
 </head>
@@ -24,8 +23,8 @@
             <?php if(!in_array(request()->route()->getName(), ['login', 'register'])): ?>
                 <div class="header__container">
                     <div class="header__center">
-                        <form class="search-form" action="/search" method="GET">
-                            <input type="text" name="query" placeholder="なにをお探しですか？">
+                        <form class="search-form" action="<?php echo e(route('item.index')); ?>" method="GET">
+                            <input type="text" name="query" placeholder="なにをお探しですか？" value="<?php echo e(request('query')); ?>">
                         </form>
                     </div>
                 </div>
@@ -53,6 +52,8 @@
             <?php echo $__env->yieldContent('content'); ?>
         </div>
     </main>
+
+    <?php echo $__env->yieldContent('scripts'); ?>
 </body>
 
 </html><?php /**PATH /var/www/resources/views/layouts/app.blade.php ENDPATH**/ ?>

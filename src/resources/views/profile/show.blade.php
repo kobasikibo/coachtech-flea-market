@@ -1,62 +1,37 @@
 @extends('layouts.app')
 
 @section('css')
-    <link rel="stylesheet" href="{{ asset('css/profile.css') }}" />
+    <link rel="stylesheet" href="{{ asset('css/show.css') }}" />
 @endsection
 
 @section('content')
-
     <div class="profile-container">
-        <div class="profile-image {{ $user->profile_image ? '' : 'default-profile' }}">
-            @if($user->profile_image)
-                <img src="{{ asset('storage/' . $user->profile_image) }}" alt="プロフィール画像">
-            @else
-                <span class="default-text">画像がありません</span>
-            @endif
+        <div class="user-info">
+            <div class="image-container">
+                @if($user->image_path)
+                    <img src="{{ asset('storage/' . $user->image_path) }}" alt="User Image" class="user-image">
+                @endif
+            </div>
+            <div class="user-name">{{ $user->name }}</div>
+            <a href="{{ route('profile.edit') }}" class="edit-profile-link">プロフィールを編集</a>
         </div>
 
-        <div class="profile-info">
-            <h2>{{ $user->name }}</h2>
-            <a href="{{ route('profile.edit') }}" class="btn">プロフィールを編集</a>
+        <div class="tab-container">
+            <a href="#" class="tab-link active">出品した商品</a>
+            <a href="#" class="tab-link disabled">購入した商品（未実装）</a>
         </div>
 
-        <!-- タブの切り替え -->
-        <div class="tabs">
-            <ul class="tab-list">
-                <li class="tab-item {{ request('tab') === 'sell' ? 'active' : '' }}">
-                    <a href="{{ route('mypage.show', ['tab' => 'sell']) }}">出品した商品</a>
-                </li>
-                <li class="tab-item {{ request('tab') === 'buy' ? 'active' : '' }}">
-                    <a href="{{ route('mypage.show', ['tab' => 'buy']) }}">購入した商品</a>
-                </li>
-            </ul>
-        </div>
-
-        <!-- 商品一覧 -->
         <div class="item-list">
-            {{--
-            @if(request('tab') === 'sell')
-                <h3>出品した商品一覧</h3>
-                @forelse($user->items as $item)
-                    <div class="item-card">
-                        <h4>{{ $item->name }}</h4>
-                        <p>{{ $item->description }}</p>
-                    </div>
-                @empty
-                    <p>出品した商品はありません。</p>
-                @endforelse
-            @else
-                <h3>購入した商品一覧</h3>
-                @forelse($user->items as $item)
-                    <div class="item-card">
-                        <h4>{{ $item->name }}</h4>
-                        <p>{{ $item->description }}</p>
-                    </div>
-                @empty
-                    <p>購入した商品はありません。</p>
-                @endforelse
-            @endif
-            --}}
+            @foreach($items as $item)
+                <div class="item">
+                    <img src="{{ asset('storage/' . $item->image_path) }}" alt="{{ $item->name }}" class="item-image">
+                    <div class="item-name">{{ $item->name }}</div>
+                </div>
+            @endforeach
         </div>
     </div>
+@endsection
+
+@section('scripts')
+    <script src="{{ asset('js/profile.js') }}" defer></script>
 @endsection

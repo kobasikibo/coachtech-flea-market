@@ -7,7 +7,6 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>@yield('title', 'coachtechフリマ')</title>
     <link rel="stylesheet" href="{{ asset('css/sanitize.css') }}">
-    <link rel="stylesheet" href="{{ asset('css/app.css') }}">
     <link rel="stylesheet" href="{{ asset('css/common.css') }}">
     @yield('css')
 </head>
@@ -24,8 +23,8 @@
             @if (!in_array(request()->route()->getName(), ['login', 'register']))
                 <div class="header__container">
                     <div class="header__center">
-                        <form class="search-form" action="/search" method="GET">
-                            <input type="text" name="query" placeholder="なにをお探しですか？">
+                        <form class="search-form" action="{{ route('item.index') }}" method="GET">
+                            <input type="text" name="query" placeholder="なにをお探しですか？" value="{{ request('query') }}">
                         </form>
                     </div>
                 </div>
@@ -53,6 +52,8 @@
             @yield('content')
         </div>
     </main>
+
+    @yield('scripts')
 </body>
 
 </html>

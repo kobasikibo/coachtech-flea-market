@@ -74,20 +74,9 @@
         <button type="submit" class="submit-button">出品する</button>
     </form>
 
-    <script>
-        function previewImage(event) {
-            const preview = document.querySelector('.image');
-            const file = event.target.files[0];
+<?php $__env->stopSection(); ?>
 
-            if (file) {
-                const reader = new FileReader();
-                reader.onload = function(e) {
-                    preview.src = e.target.result;
-                    preview.classList.add('show');
-                };
-                reader.readAsDataURL(file);
-            }
-        }
-    </script>
+<?php $__env->startSection('scripts'); ?>
+    <script src="<?php echo e(asset('js/item-create.js')); ?>"></script>
 <?php $__env->stopSection(); ?>
 <?php echo $__env->make('layouts.app', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH /var/www/resources/views/item/create.blade.php ENDPATH**/ ?>

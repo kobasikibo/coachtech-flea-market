@@ -76,19 +76,8 @@
         <button type="submit" class="submit-button">出品する</button>
     </form>
 
-    <script>
-        function previewImage(event) {
-            const preview = document.querySelector('.image');
-            const file = event.target.files[0];
+@endsection
 
-            if (file) {
-                const reader = new FileReader();
-                reader.onload = function(e) {
-                    preview.src = e.target.result;
-                    preview.classList.add('show');
-                };
-                reader.readAsDataURL(file);
-            }
-        }
-    </script>
+@section('scripts')
+    <script src="{{ asset('js/item-create.js') }}"></script>
 @endsection

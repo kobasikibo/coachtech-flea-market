@@ -1,8 +1,10 @@
 .header {
     display: flex;
     justify-content: center;
-    padding: 10px 20px;
+    padding: 15px 15px;
     background-color: rgba(0, 0, 0, 1);
+    font-size: 24px;
+    font-weight: 400;
 }
 
 .header__inner {
@@ -22,14 +24,13 @@
     justify-content: flex-start;
 }
 
-.header__links {
-    display: flex;
-    align-items: center;
-    gap: 15px; /* アイテム間のスペースを調整 */
+.header__logo {
+    max-width: 100%;
 }
 
 .header__logo img {
-    max-width: 100%;
+    margin-left: 33px;
+    padding: 7px;
     height: auto;
 }
 
@@ -40,19 +41,25 @@
 }
 
 .search-form input {
-    width: 300px;
-    margin: 15px;
+    width: 500px;
     padding: 10px;
-    font-size: 16px;
+    padding-left: 40px;
+    font-size: 24px;
+    font-weight: 400;
     border: 1px solid rgba(0, 0, 0, 1);
     border-radius: 5px;
+}
+
+.header__links {
+    display: flex;
+    align-items: center;
+    gap: 15px; /* アイテム間のスペースを調整 */
 }
 
 .link-style-button {
     background: none;
     color: rgba(255, 255, 255, 1);
     border: none;
-    padding: 10px 15px;
     font: inherit;
     text-decoration: none;
     cursor: pointer;
@@ -83,6 +90,6 @@
     color: rgba(0, 0, 0, 1);
     background-color: rgba(255, 255, 255, 1);
     border-radius: 5px;
-    padding: 10px 20px;
+    padding: 10px 30px;
     transition: background-color 0.3s;
 }

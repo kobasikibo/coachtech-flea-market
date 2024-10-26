@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Controllers\Controller;
 use App\Models\User;
 use App\Models\Address;
+use App\Models\Item;
 use App\Http\Requests\ProfileRequest;
 use App\Http\Requests\AddressRequest;
 use Illuminate\Support\Facades\Auth;
@@ -20,15 +21,14 @@ class ProfileController extends Controller
         $this->user = Auth::user();
     }
 
-    // マイページ表示
     public function show()
     {
-        return view('profile.show', [
-            'user' => $this->user,
-        ]);
+        $user = $this->user;
+        $items = Item::where('user_id', $user->id)->get();
+
+        return view('profile.show', compact('user', 'items'));
     }
 
-    // プロフィール編集画面
     public function edit()
     {
         $address = $this->user->address ?? null;
@@ -39,7 +39,6 @@ class ProfileController extends Controller
         ]);
     }
 
-    // プロフィール更新処理
     public function update(ProfileRequest $profileRequest, AddressRequest $addressRequest)
     {
         // プロフィール画像の保存
