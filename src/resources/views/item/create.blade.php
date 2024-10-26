@@ -34,7 +34,7 @@
         <div class="category-list">
             @foreach ($categories as $category)
                 <div class="category-item">
-                    <input type="checkbox" name="categories[]" value="{{ $category->id }}" id="category-{{ $loop->index }}" class="category-checkbox">
+                    <input type="checkbox" name="category_ids[]" value="{{ $category->id }}" id="category-{{ $loop->index }}" class="category-checkbox">
                     <label class="category-label" for="category-{{ $loop->index }}">{{ $category->name }}</label>
                 </div>
             @endforeach
@@ -60,7 +60,7 @@
 
         <div class="brand">
             <label class="brand-label">ブランド名</label>
-            <input type="text" name="brand" class="brand-input" placeholder="例: Nike" >
+            <input type="text" name="brand" class="brand-input" >
         </div>
 
         <div class="description">

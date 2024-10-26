@@ -32,7 +32,7 @@
         <div class="category-list">
             <?php $__currentLoopData = $categories; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $category): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                 <div class="category-item">
-                    <input type="checkbox" name="categories[]" value="<?php echo e($category->id); ?>" id="category-<?php echo e($loop->index); ?>" class="category-checkbox">
+                    <input type="checkbox" name="category_ids[]" value="<?php echo e($category->id); ?>" id="category-<?php echo e($loop->index); ?>" class="category-checkbox">
                     <label class="category-label" for="category-<?php echo e($loop->index); ?>"><?php echo e($category->name); ?></label>
                 </div>
             <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
@@ -58,7 +58,7 @@
 
         <div class="brand">
             <label class="brand-label">ブランド名</label>
-            <input type="text" name="brand" class="brand-input" placeholder="例: Nike" >
+            <input type="text" name="brand" class="brand-input" >
         </div>
 
         <div class="description">
