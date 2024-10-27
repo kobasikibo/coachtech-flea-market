@@ -23,4 +23,9 @@ class Item extends Model
     {
         return $this->belongsToMany(Category::class);
     }
+
+    public function likedByUsers()
+    {
+        return $this->belongsToMany(User::class, 'likes')->withTimestamps();
+    }
 }

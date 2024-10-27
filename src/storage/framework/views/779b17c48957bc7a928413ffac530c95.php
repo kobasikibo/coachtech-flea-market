@@ -20,7 +20,10 @@
 
         <!-- アイコン一覧 -->
         <div class="item-icons">
-            <img src="<?php echo e(asset('images/icons/like-icon.png')); ?>" alt="いいね" class="icon">
+                <button class="like-button" <?php echo e($item->likedByUsers()->where('user_id', auth()->id())->exists() ? 'liked' : ''); ?>" data-item-id="<?php echo e($item->id); ?>">
+                    <img src="<?php echo e(asset('images/icons/like-icon.png')); ?>" alt="いいね" class="icon">
+                    <span class="likes-count"><?php echo e($item->likedByUsers()->count()); ?></span>
+                </button>
             <img src="<?php echo e(asset('images/icons/comment-icon.png')); ?>" alt="コメント" class="icon">
         </div>
 
@@ -45,5 +48,9 @@
         </div>
     </div>
 </div>
+<?php $__env->stopSection(); ?>
+
+<?php $__env->startSection('scripts'); ?>
+    <script src="<?php echo e(asset('js/item-show.js')); ?>"></script>
 <?php $__env->stopSection(); ?>
 <?php echo $__env->make('layouts.app', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH /var/www/resources/views/item/show.blade.php ENDPATH**/ ?>

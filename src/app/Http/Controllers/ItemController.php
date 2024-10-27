@@ -67,4 +67,22 @@ class ItemController extends Controller
 
         return redirect()->route('item.index')->with('success', '商品を出品しました。');
     }
+
+    public function like(Item $item)
+    {
+        $item->likedByUsers()->attach(auth()->id());
+
+        return response()->json([
+            'likes_count' => $item->likedByUsers()->count(),
+        ]);
+    }
+
+    public function unlike(Item $item)
+    {
+        $item->likedByUsers()->detach(auth()->id());
+
+        return response()->json([
+            'likes_count' => $item->likedByUsers()->count(),
+        ]);
+    }
 }

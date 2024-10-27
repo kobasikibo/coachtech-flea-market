@@ -22,7 +22,10 @@
 
         <!-- アイコン一覧 -->
         <div class="item-icons">
-            <img src="{{ asset('images/icons/like-icon.png') }}" alt="いいね" class="icon">
+                <button class="like-button" {{ $item->likedByUsers()->where('user_id', auth()->id())->exists() ? 'liked' : '' }}" data-item-id="{{ $item->id }}">
+                    <img src="{{ asset('images/icons/like-icon.png') }}" alt="いいね" class="icon">
+                    <span class="likes-count">{{ $item->likedByUsers()->count() }}</span>
+                </button>
             <img src="{{ asset('images/icons/comment-icon.png') }}" alt="コメント" class="icon">
         </div>
 
@@ -47,4 +50,8 @@
         </div>
     </div>
 </div>
+@endsection
+
+@section('scripts')
+    <script src="{{ asset('js/item-show.js') }}"></script>
 @endsection
