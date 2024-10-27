@@ -1,0 +1,125 @@
+/* item-detailを左右に分割 */
+.item-detail {
+    display: flex; /* 左右に要素を並べる */
+    justify-content: space-between; /* 余白を均等に */
+    align-items: flex-start; /* 上側で揃える */
+    gap: 100px;
+    padding: 100px;
+    width: 100%; /* 親要素いっぱいに広げる */
+    margin: 0 auto;
+}
+
+.item-image-container {
+    flex: 1;
+    aspect-ratio: 1 / 1;
+    background-color: rgba(217, 217, 217, 0.2);
+    margin-top: 30px;
+}
+
+.item-image {
+    max-width: 100%;
+    object-fit: cover;
+}
+
+.item-info {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 15px; /* 各情報の間のスペース */
+}
+
+/* 商品名 */
+.item-name {
+    font-size: 45px;
+    font-weight: 700;
+}
+
+/* ブランド名 */
+.brand-name {
+    font-size: 24px; /* ブランド名のスタイル */
+    font-weight: 400;
+}
+
+/* 価格のスタイル */
+.price {
+    font-size: 30px;
+    font-weight: 400;
+}
+
+/* 価格の数値部分 */
+.price .value {
+    font-size: 45px;
+    font-weight: 400;
+}
+
+/* アイコンのスタイル */
+.item-icons {
+    display: flex; /* アイコンを横並びにする */
+    gap: 40px; /* アイコン間のスペース */
+}
+
+.icon {
+    width: 40px;
+    height: 40px;
+    margin-left: 40px;
+    filter: hue-rotate(90deg);
+}
+
+/* 商品説明ラベル */
+.item-description-label {
+    font-size: 36px; /* ラベルのフォントサイズ */
+    font-weight: 700;
+}
+
+/* 商品説明のスタイル */
+.item-description {
+    font-size: 18px; /* 説明文のスタイル */
+    font-weight: 400;
+}
+
+/* 商品情報ラベル */
+.item-information-label {
+    font-size: 36px; /* ラベルのフォントサイズ */
+    font-weight: 700;
+}
+
+/* カテゴリーのスタイル */
+.item-categories {
+    display: flex; /* 横並びにする */
+    gap: 20px; /* カテゴリー間のスペース */
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.category-label {
+    font-size: 24px; /* 商品状態のフォントサイズ */
+    font-weight: 700;
+    margin-right: 30px;
+}
+
+.category-name {
+    white-space: nowrap;
+    color: rgba(0, 0, 0, 1);
+    background-color: rgba(217, 217, 217, 1);
+    font-size: 20px;
+    font-weight: 400;
+    border-radius: 30px;
+    padding: 5px 10px;
+}
+
+.item-condition {
+    display: flex; /* 横並びにする */
+    gap: 80px; /* カテゴリー間のスペース */
+    align-items: center;
+}
+
+.condition-label {
+    font-size: 24px; /* 商品状態のフォントサイズ */
+    font-weight: 700;
+}
+
+/* 商品の状態 */
+.item-condition {
+    font-size: 18px; /* 商品状態のフォントサイズ */
+    font-weight: 400;
+}

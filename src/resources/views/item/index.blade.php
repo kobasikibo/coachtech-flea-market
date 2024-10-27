@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('css')
-    <link rel="stylesheet" href="{{ asset('css/index.css') }}" />
+    <link rel="stylesheet" href="{{ asset('css/item-index.css') }}" />
 @endsection
 
 @section('content')
@@ -13,7 +13,9 @@
     <div class="item-list">
         @foreach($items as $item)
             <div class="item">
-                <img src="{{ asset('storage/' . $item->image_path) }}" alt="{{ $item->name }}">
+                <a href="{{ route('item.show', ['item_id' => $item->id]) }}">
+                    <img src="{{ asset('storage/' . $item->image_path) }}" alt="{{ $item->name }}">
+                </a>
                 <div class="item-name">{{ $item->name }}</div>
                 {{-- 購入済み表示は後回し --}}
             </div>

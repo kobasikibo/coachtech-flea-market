@@ -1,0 +1,141 @@
+.container {
+    width: 50%; /* コンテナの幅を設定 */
+    max-width: 1200px; /* 最大幅を設定 */
+    margin: 0 auto; /* 左右のマージンを自動にして中央寄せ */
+    text-align: left; /* テキストを左寄せにする */
+}
+
+/* 仮　 */
+h1 {
+    text-align: center;
+}
+
+.section-title {color: rgba(95, 95, 95, 1);
+    border-bottom: 1px solid rgba(95, 95, 95, 1);
+}
+
+/* 各入力フォームのスタイル */
+.image-container,
+.category-list,
+.condition,
+.name,
+.brand,
+.description,
+.price {
+    width: 100%; /* 幅を100%に設定 */
+    margin-bottom: 20px; /* 下の要素との間に余白を追加 */
+    box-sizing: border-box; /* ボックスモデルの計算にパディングとボーダーを含める */
+}
+
+/* ラベルのスタイル */
+.label {
+    display: block; /* ラベルをブロック要素にする */
+    margin-bottom: 5px; /* ラベルと入力フィールドの間に余白を追加 */
+}
+
+/* 入力フィールドのスタイル */
+.name-input,
+.brand-input,
+.description-textarea,
+.price-input,
+.condition-select {
+    width: 100%; /* 幅を100%に設定 */
+    padding: 10px; /* パディングを追加 */
+    border: 1px solid #ccc; /* ボーダーのスタイル */
+    border-radius: 4px; /* 角を丸く */
+    box-sizing: border-box; /* ボックスモデルの計算にパディングとボーダーを含める */
+}
+
+.image-container {
+    position: relative;
+    width: auto;
+    height: 150px;
+    border: 2px dashed #ccc; /* 外枠のスタイル */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 20px auto; /* センター配置 */
+    border-radius: 8px;
+}
+
+.image-container .image {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain; /* アスペクト比を保ちながら収める */
+    display: none; /* 初期状態で非表示 */
+}
+
+.image-container .image.show {
+    display: block; /* 'show'クラスが付与された場合に表示 */
+}
+
+.upload-button {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: rgba(255, 86, 85, 1);
+    padding: 5px 20px; /* ボタンのパディング */
+    border: 2px solid rgba(255, 86, 85, 1); /* ボタンに枠を追加 */
+    border-radius: 10px; /* ボタンの角を丸く */
+    background-color: white; /* 背景色を白に */
+    cursor: pointer;
+    transition: background-color 0.3s, color 0.3s; /* 色の変化にアニメーションを追加 */
+    white-space: nowrap; /* 折り返さずに1行で表示 */
+}
+
+.upload-button:hover {
+    background-color: rgba(255, 86, 85, 1); /* ホバー時の背景色 */
+    color: white; /* ホバー時のテキスト色 */
+}
+
+.image-upload {
+    display: none; /* デフォルトのファイル選択ボタンを隠す */
+}
+
+.category-item {
+    display: inline-block;
+    margin: 10px;
+}
+
+.category-label {
+    display: inline-block; /* インラインブロックにすることで横並びに */
+    background-color: white;
+    color: rgba(255, 86, 85, 1);
+    padding: 3px 15px; /* カテゴリ名の内側の余白 */
+    border: 2px solid rgba(255, 86, 85, 1);
+    border-radius: 20px;
+    cursor: pointer;
+    text-align: center;
+    transition: background-color 0.3s, color 0.3s; /* 背景色と文字色の遷移効果 */
+    white-space: nowrap; /* 折り返さない */
+}
+
+.category-checkbox {
+    display: none;
+}
+
+.category-checkbox:checked + .category-label {
+    background-color: rgba(255, 86, 85, 1);
+    color: white;
+}
+
+.category-label:hover {
+    background-color: rgba(255, 86, 85, 0.1);
+}
+
+.submit-button {
+    width: 100%;
+    margin: 60px auto;
+    padding: 10px;
+    background-color: rgba(255, 86, 85, 1);
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s; /* 背景色の変化にアニメーションを追加 */
+}
+
+.submit-button:hover {
+    background-color: rgba(255, 86, 85, 0.8);
+}

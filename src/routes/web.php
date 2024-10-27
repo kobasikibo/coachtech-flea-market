@@ -7,6 +7,7 @@ use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\ProfileController;
 
 Route::get('/', [ItemController::class, 'index'])->name('item.index');
+Route::get('/item/{item_id}', [ItemController::class, 'show'])->name('item.show');
 Route::post('/register', [RegisterController::class, 'register'])->name('auth.register');
 Route::post('/login', [LoginController::class, 'login'])->name('auth.login');
 

@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('css')
-    <link rel="stylesheet" href="{{ asset('css/show.css') }}" />
+    <link rel="stylesheet" href="{{ asset('css/@profile-show.css') }}" />
 @endsection
 
 @section('content')
@@ -17,8 +17,8 @@
         </div>
 
         <div class="tab-container">
-            <a href="#" class="tab-link active">出品した商品</a>
-            <a href="#" class="tab-link disabled">購入した商品（未実装）</a>
+            <a href="{{ url('/mypage?tab=sell') }}" class="tab-link {{ $tab === 'sell' ? 'active' : '' }}">出品した商品</a>
+            <a href="{{ url('/mypage?tab=buy') }}" class="tab-link {{ $tab === 'buy' ? 'active' : 'disabled' }}">購入した商品（未実装）</a>
         </div>
 
         <div class="item-list">

@@ -26,6 +26,14 @@ class ItemController extends Controller
         return view('item.index', compact('items'));
     }
 
+
+    public function show($item_id)
+    {
+        $item = Item::with(['categories', ])->findOrFail($item_id);
+
+        return view('item.show', compact('item'));
+    }
+
     public function create()
     {
         $categories = Category::all();

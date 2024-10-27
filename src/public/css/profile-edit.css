@@ -1,0 +1,6 @@
+.container {
+    width: 50%; /* コンテナの幅を設定 */
+    max-width: 1200px; /* 最大幅を設定 */
+    margin: 0 auto; /* 左右のマージンを自動にして中央寄せ */
+    text-align: left; /* テキストを左寄せにする */
+}

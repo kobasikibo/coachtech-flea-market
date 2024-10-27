@@ -24,9 +24,20 @@ class ProfileController extends Controller
     public function show()
     {
         $user = $this->user;
-        $items = Item::where('user_id', $user->id)->get();
+        $tab = request()->query('tab', 'sell');
 
-        return view('profile.show', compact('user', 'items'));
+        if ($tab === 'sell') {
+            $items = Item::where('user_id', $user->id)->get();
+        } elseif ($tab === 'buy') {
+            // 購入した商品を取得（未実装なので空のコレクションを返す）
+            // 購入した商品を管理するロジックを後で追加することができます。
+            $items = collect(); // 現在は未実装のため、空のコレクション
+        } else {
+            // 購入した商品を実装したら要編集！
+            $items = collect();
+        }
+
+        return view('profile.show', compact('user', 'items', 'tab'));
     }
 
     public function edit()

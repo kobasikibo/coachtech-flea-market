@@ -15,8 +15,8 @@
         </div>
 
         <div class="tab-container">
-            <a href="#" class="tab-link active">出品した商品</a>
-            <a href="#" class="tab-link disabled">購入した商品（未実装）</a>
+            <a href="<?php echo e(url('/mypage?tab=sell')); ?>" class="tab-link <?php echo e($tab === 'sell' ? 'active' : ''); ?>">出品した商品</a>
+            <a href="<?php echo e(url('/mypage?tab=buy')); ?>" class="tab-link <?php echo e($tab === 'buy' ? 'active' : 'disabled'); ?>">購入した商品（未実装）</a>
         </div>
 
         <div class="item-list">
