@@ -1,5 +1,5 @@
 <?php $__env->startSection('css'); ?>
-    <link rel="stylesheet" href="<?php echo e(asset('css/edit.css')); ?>" />
+    <link rel="stylesheet" href="<?php echo e(asset('css/profile-edit.css')); ?>" />
 <?php $__env->stopSection(); ?>
 
 <?php $__env->startSection('content'); ?>

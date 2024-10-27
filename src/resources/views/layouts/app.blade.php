@@ -24,7 +24,8 @@
                 <div class="header__container">
                     <div class="header__center">
                         <form class="search-form" action="{{ route('item.index') }}" method="GET">
-                            <input type="text" name="query" placeholder="なにをお探しですか？" value="{{ request('query') }}">
+                            <input type="hidden" name="tab" value="{{ request()->query('tab', 'recommend') }}">
+                            <input type="text" name="query" value="{{ old('query', $query ?? '') }}" placeholder="なにをお探しですか？">
                         </form>
                     </div>
                 </div>

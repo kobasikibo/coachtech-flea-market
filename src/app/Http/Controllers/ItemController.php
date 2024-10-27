@@ -15,15 +15,22 @@ class ItemController extends Controller
     {
         $query = $request->get('query');
         $userId = Auth::id();
+        $tab = request()->query('tab', 'recommend');
 
-        // 商品の取得
+        // 検索クエリの適用とタブごとの商品取得
         $items = Item::when($query, function ($queryBuilder) use ($query) {
-            return $queryBuilder->where('name', 'like', '%' . $query . '%');
-        })
-        ->where('user_id', '!=', $userId) // 自分が出品した商品は除外
-        ->get();
+                return $queryBuilder->where('name', 'like', '%' . $query . '%');
+            });
 
-        return view('item.index', compact('items'));
+        if ($tab === 'mylist' && Auth::check()) {
+            // マイリストに切り替えた場合の処理。未認証なら何も表示しない。
+            $items = Auth::user()->likedItems(); // likedItemsリレーションの利用
+        } else {
+            // おすすめ商品（デフォルト）の取得。自分の出品は除外。
+            $items = $items->where('user_id', '!=', $userId)->get();
+        }
+
+        return view('item.index', compact('items', 'tab', 'query'));
     }
 
 
