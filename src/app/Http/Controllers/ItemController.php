@@ -24,7 +24,7 @@ class ItemController extends Controller
 
         if ($tab === 'mylist' && Auth::check()) {
             // マイリストに切り替えた場合の処理。未認証なら何も表示しない。
-            $items = Auth::user()->likedItems(); // likedItemsリレーションの利用
+            $items = Auth::user()->likes;
         } else {
             // おすすめ商品（デフォルト）の取得。自分の出品は除外。
             $items = $items->where('user_id', '!=', $userId)->get();
@@ -70,19 +70,21 @@ class ItemController extends Controller
 
     public function like(Item $item)
     {
-        $item->likedByUsers()->attach(auth()->id());
+        if (!Auth::check()) {
+            return response()->json(['error' => 'Unauthorized'], 401);
+        }
 
-        return response()->json([
-            'likes_count' => $item->likedByUsers()->count(),
-        ]);
+        $user = Auth::user();
+        $user->likes()->attach($item->id);
+
+        return response()->json(['likes_count' => $item->likedByUsers()->count()]);
     }
 
     public function unlike(Item $item)
     {
-        $item->likedByUsers()->detach(auth()->id());
+        $user = Auth::user();
+        $user->likes()->detach($item->id);
 
-        return response()->json([
-            'likes_count' => $item->likedByUsers()->count(),
-        ]);
+        return response()->json(['likes_count' => $item->likedByUsers()->count()]);
     }
 }

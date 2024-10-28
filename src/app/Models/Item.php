@@ -19,11 +19,13 @@ class Item extends Model
         'user_id'
     ];
 
+    // リレーション：商品のカテゴリー
     public function categories()
     {
         return $this->belongsToMany(Category::class);
     }
 
+    // リレーション：商品を「いいね」したユーザ
     public function likedByUsers()
     {
         return $this->belongsToMany(User::class, 'likes')->withTimestamps();

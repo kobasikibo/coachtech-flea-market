@@ -20,10 +20,11 @@
 
         <!-- アイコン一覧 -->
         <div class="item-icons">
-                <button class="like-button" <?php echo e($item->likedByUsers()->where('user_id', auth()->id())->exists() ? 'liked' : ''); ?>" data-item-id="<?php echo e($item->id); ?>">
-                    <img src="<?php echo e(asset('images/icons/like-icon.png')); ?>" alt="いいね" class="icon">
-                    <span class="likes-count"><?php echo e($item->likedByUsers()->count()); ?></span>
-                </button>
+            <button class="like-button <?php echo e($item->likedByUsers()->where('user_id', auth()->id())->exists() ? 'liked' : ''); ?>" data-item-id="<?php echo e($item->id); ?>"
+            <?php echo e(auth()->check() ? '' : 'disabled'); ?>>
+                <img src="<?php echo e(asset('images/icons/like-icon.png')); ?>" alt="いいね" class="icon">
+                <span class="likes-count"><?php echo e($item->likedByUsers()->count()); ?></span>
+            </button>
             <img src="<?php echo e(asset('images/icons/comment-icon.png')); ?>" alt="コメント" class="icon">
         </div>
 

@@ -22,10 +22,11 @@
 
         <!-- アイコン一覧 -->
         <div class="item-icons">
-                <button class="like-button" {{ $item->likedByUsers()->where('user_id', auth()->id())->exists() ? 'liked' : '' }}" data-item-id="{{ $item->id }}">
-                    <img src="{{ asset('images/icons/like-icon.png') }}" alt="いいね" class="icon">
-                    <span class="likes-count">{{ $item->likedByUsers()->count() }}</span>
-                </button>
+            <button class="like-button {{ $item->likedByUsers()->where('user_id', auth()->id())->exists() ? 'liked' : '' }}" data-item-id="{{ $item->id }}"
+            {{ auth()->check() ? '' : 'disabled' }}>
+                <img src="{{ asset('images/icons/like-icon.png') }}" alt="いいね" class="icon">
+                <span class="likes-count">{{ $item->likedByUsers()->count() }}</span>
+            </button>
             <img src="{{ asset('images/icons/comment-icon.png') }}" alt="コメント" class="icon">
         </div>
 

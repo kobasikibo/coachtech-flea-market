@@ -4,10 +4,8 @@
 
 <?php $__env->startSection('content'); ?>
     <div class="tab-container">
-        <a href="<?php echo e(url('/')); ?>" class="tab-link <?php echo e(request()->query('tab', 'recommend') === 'recommend' ? 'active' : ''); ?>">おすすめ
-        </a>
-        <a href="<?php echo e(url('/?tab=mylist')); ?>" class="tab-link <?php echo e(request()->query('tab') === 'mylist' ? 'active' : 'disabled'); ?>">マイリスト（未実装）
-        </a>
+        <a href="<?php echo e(url('/')); ?>" class="tab-link <?php echo e(request()->query('tab') === null || request()->query('tab') === 'recommend' ? 'active' : ''); ?>">おすすめ</a>
+        <a href="<?php echo e(url('/?tab=mylist')); ?>" class="tab-link <?php echo e(request()->query('tab') === 'mylist' ? 'active' : ''); ?>">マイリスト</a>
     </div>
 
     <div class="item-list">

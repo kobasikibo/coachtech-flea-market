@@ -23,11 +23,6 @@
     color: rgba(255, 0, 0, 1);
 }
 
-.tab-link.disabled {
-    color: rgba(95, 95, 95, 1);
-    cursor: not-allowed;
-}
-
 .item-list {
     margin-top: 60px;
     display: flex;

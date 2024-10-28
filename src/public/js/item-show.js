@@ -6,6 +6,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
         button.addEventListener("click", function (event) {
             event.preventDefault(); // デフォルトの動作を防ぐ
+
             const itemId = this.dataset.itemId;
             const isNowLiked = this.classList.toggle("liked");
 
@@ -15,12 +16,13 @@ document.addEventListener("DOMContentLoaded", function () {
             fetch(url, {
                 method: method,
                 headers: {
-                    "X-CSRF-TOKEN": document.querySelector('meta[name="csrf-token"]').content,
+                    "X-CSRF-TOKEN": document.querySelector(
+                        'meta[name="csrf-token"]'
+                    ).content,
+                    "Content-Type": "application/json",
                 },
             })
-                .then((response) => {
-                    return response.json();
-                })
+                .then((response) => response.json())
                 .then((data) => {
                     if (data.likes_count !== undefined) {
                         likesCountSpan.textContent = data.likes_count;
