@@ -13,22 +13,24 @@ class ItemController extends Controller
 {
     public function index(SearchRequest $request)
     {
-        $query = $request->get('query');
-        $userId = Auth::id();
-        $tab = request()->query('tab', 'recommend');
-
-        // 検索クエリの適用とタブごとの商品取得
-        $items = Item::when($query, function ($queryBuilder) use ($query) {
-                return $queryBuilder->where('name', 'like', '%' . $query . '%');
-            });
+        $query = $request->get('query');  // 検索クエリ
+        $userId = Auth::id();             // 現在のユーザーID
+        $tab = $request->query('tab', 'recommend');  // デフォルトは'recommend'タブ
 
         if ($tab === 'mylist' && Auth::check()) {
-            // マイリストに切り替えた場合の処理。未認証なら何も表示しない。
-            $items = Auth::user()->likes;
+            // マイリスト：ユーザーが「いいね」した商品に検索条件を適用
+            $itemsQuery = Auth::user()->likes()->when($query, function ($queryBuilder) use ($query) {
+                return $queryBuilder->where('name', 'like', '%' . $query . '%');
+            });
         } else {
-            // おすすめ商品（デフォルト）の取得。自分の出品は除外。
-            $items = $items->where('user_id', '!=', $userId)->get();
+            // おすすめ：自分の出品を除外し、検索条件を適用
+            $itemsQuery = Item::when($query, function ($queryBuilder) use ($query) {
+                return $queryBuilder->where('name', 'like', '%' . $query . '%');
+            })->where('user_id', '!=', $userId);
         }
+
+        // アイテムを取得
+        $items = $itemsQuery->get();
 
         return view('item.index', compact('items', 'tab', 'query'));
     }

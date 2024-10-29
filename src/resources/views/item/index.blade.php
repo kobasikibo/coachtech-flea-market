@@ -6,8 +6,8 @@
 
 @section('content')
     <div class="tab-container">
-        <a href="{{ url('/') }}" class="tab-link {{ request()->query('tab') === null || request()->query('tab') === 'recommend' ? 'active' : '' }}">おすすめ</a>
-        <a href="{{ url('/?tab=mylist') }}" class="tab-link {{ request()->query('tab') === 'mylist' ? 'active' : '' }}">マイリスト</a>
+        <a href="{{ url('/') }}?tab=recommend&query={{ request()->get('query', '') }}" class="tab-link {{ request()->query('tab') === null || request()->query('tab') === 'recommend' ? 'active' : '' }}">おすすめ</a>
+        <a href="{{ url('/?tab=mylist&query=' . request()->get('query', '')) }}" class="tab-link {{ request()->query('tab') === 'mylist' ? 'active' : '' }}">マイリスト</a>
     </div>
 
     <div class="item-list">

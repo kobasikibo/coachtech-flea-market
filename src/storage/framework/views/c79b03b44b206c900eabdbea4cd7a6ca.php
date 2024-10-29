@@ -26,7 +26,7 @@
                     <div class="header__center">
                         <form class="search-form" action="<?php echo e(route('item.index')); ?>" method="GET">
                             <input type="hidden" name="tab" value="<?php echo e(request()->query('tab', 'recommend')); ?>">
-                            <input type="text" name="query" value="<?php echo e(old('query', $query ?? '')); ?>" placeholder="なにをお探しですか？">
+                            <input type="text" name="query" value="<?php echo e(request()->get('query', '')); ?>" placeholder="なにをお探しですか？">
                         </form>
                     </div>
                 </div>
