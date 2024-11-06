@@ -27,15 +27,18 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
-    // リレーション：ユーザの住所
     public function address()
     {
         return $this->belongsTo(Address::class);
     }
 
-    // リレーション：ユーザが「いいね」した商品
     public function likes()
     {
         return $this->belongsToMany(Item::class, 'likes');
+    }
+
+    public function comments()
+    {
+        return $this->hasMany(Comment::class);
     }
 }

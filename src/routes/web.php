@@ -5,6 +5,8 @@ use App\Http\Controllers\ItemController;
 use App\Http\Controllers\Auth\RegisterController;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\CommentController;
+
 
 Route::get('/', [ItemController::class, 'index'])->name('item.index');
 Route::get('/item/{item_id}', [ItemController::class, 'show'])->name('item.show');
@@ -22,3 +24,5 @@ Route::middleware('auth')->group(function () {
 
 Route::post('/items/{item}/like', [ItemController::class, 'like'])->name('item.like');
 Route::delete('/items/{item}/like', [ItemController::class, 'unlike'])->name('item.unlike');
+
+Route::post('/item/{item_id}/comments', [CommentController::class, 'store'])->name('comments.store');

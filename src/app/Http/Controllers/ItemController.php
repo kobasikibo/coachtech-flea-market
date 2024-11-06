@@ -13,8 +13,8 @@ class ItemController extends Controller
 {
     public function index(SearchRequest $request)
     {
-        $query = $request->get('query');  // 検索クエリ
-        $userId = Auth::id();             // 現在のユーザーID
+        $query = $request->get('query');
+        $userId = Auth::id();
         $tab = $request->query('tab', 'recommend');  // デフォルトは'recommend'タブ
 
         if ($tab === 'mylist' && Auth::check()) {
@@ -29,7 +29,6 @@ class ItemController extends Controller
             })->where('user_id', '!=', $userId);
         }
 
-        // アイテムを取得
         $items = $itemsQuery->get();
 
         return view('item.index', compact('items', 'tab', 'query'));

@@ -1,24 +1,21 @@
 document.addEventListener("DOMContentLoaded", function () {
-    const likeButtons = document.querySelectorAll(".like-button");
+    const csrfToken = document.querySelector('meta[name="csrf-token"]').content;
 
+    const likeButtons = document.querySelectorAll(".like-button");
     likeButtons.forEach((button) => {
         const likesCountSpan = button.querySelector(".likes-count");
 
         button.addEventListener("click", function (event) {
             event.preventDefault(); // デフォルトの動作を防ぐ
-
             const itemId = this.dataset.itemId;
             const isNowLiked = this.classList.toggle("liked");
-
             const method = isNowLiked ? "POST" : "DELETE";
             const url = `/items/${itemId}/like`;
 
             fetch(url, {
                 method: method,
                 headers: {
-                    "X-CSRF-TOKEN": document.querySelector(
-                        'meta[name="csrf-token"]'
-                    ).content,
+                    "X-CSRF-TOKEN": csrfToken,
                     "Content-Type": "application/json",
                 },
             })
@@ -26,6 +23,52 @@ document.addEventListener("DOMContentLoaded", function () {
                 .then((data) => {
                     if (data.likes_count !== undefined) {
                         likesCountSpan.textContent = data.likes_count;
+                    }
+                })
+                .catch((error) => console.error("Error:", error));
+        });
+    });
+
+    const commentForms = document.querySelectorAll(".comment-form form");
+    commentForms.forEach((form) => {
+        form.addEventListener("submit", function (event) {
+            event.preventDefault(); // デフォルトの動作を防ぐ
+            const formData = new FormData(this);
+            const itemId = this.getAttribute("action").split("/").pop(); // URLからアイテムIDを取得
+
+            fetch(this.action, {
+                method: "POST",
+                body: formData,
+                headers: {
+                    "X-CSRF-TOKEN": csrfToken,
+                },
+            })
+                .then((response) => response.json())
+                .then((data) => {
+                    // 成功した場合
+                    if (data.success) {
+                        // コメントカウントとコメントラベルの更新
+                        document.querySelector(".comments-count").textContent =
+                            data.comments_count;
+                        document.querySelector(
+                            ".comment-label"
+                        ).textContent = `コメント（${data.comments_count}）`;
+
+                        // コメント一覧の更新
+                        const commentsSection =
+                            document.querySelector(".comments-section");
+                        commentsSection.innerHTML += `
+                            <div class="comment">
+                                <img src="${data.comment.user_image}" alt="${data.comment.user_name}" class="user-image">
+                                <div class="comment-content">
+                                    <span class="user-name">${data.comment.user_name}</span>
+                                    <p>${data.comment.content}</p>
+                                    <span class="comment-time">${data.comment.created_at}</span>
+                                </div>
+                            </div>`;
+
+                        // フォームをリセット
+                        this.reset();
                     }
                 })
                 .catch((error) => console.error("Error:", error));

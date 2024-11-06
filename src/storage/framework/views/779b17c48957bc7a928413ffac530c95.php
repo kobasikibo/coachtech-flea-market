@@ -4,35 +4,33 @@
 
 <?php $__env->startSection('content'); ?>
 <div class="item-detail">
-    <!-- 左側：商品画像 -->
     <div class="item-image-container">
         <img src="<?php echo e(asset('storage/' . $item->image_path)); ?>" alt="<?php echo e($item->name); ?>" class="item-image">
     </div>
 
-    <!-- 右側：商品情報 -->
     <div class="item-info">
         <div class="item-name"><?php echo e($item->name); ?></div>
-        <div class="brand-name">ブランド<?php echo e($item->brand); ?></div>
+        <div class="brand-name"><?php echo e($item->brand); ?></div>
 
         <div class="price">
             ¥<span class="value"><?php echo e(number_format($item->price)); ?></span> (税込)
         </div>
 
-        <!-- アイコン一覧 -->
         <div class="item-icons">
             <button class="like-button <?php echo e($item->likedByUsers()->where('user_id', auth()->id())->exists() ? 'liked' : ''); ?>" data-item-id="<?php echo e($item->id); ?>"
             <?php echo e(auth()->check() ? '' : 'disabled'); ?>>
                 <img src="<?php echo e(asset('images/icons/like-icon.png')); ?>" alt="いいね" class="icon">
                 <span class="likes-count"><?php echo e($item->likedByUsers()->count()); ?></span>
             </button>
-            <img src="<?php echo e(asset('images/icons/comment-icon.png')); ?>" alt="コメント" class="icon">
+            <div class="comment-icon">
+                <img src="<?php echo e(asset('images/icons/comment-icon.png')); ?>" alt="コメント" class="icon">
+                <span class="comments-count"><?php echo e($item->comments()->count()); ?></span>
+            </div>
         </div>
 
-        <!-- 商品説明 -->
-        <div class="item-description-label">商品説明</div>
+        <h2 class="item-description-label">商品説明</h2>
         <p class="item-description"><?php echo e($item->description); ?></p>
 
-        <!-- 商品の情報 -->
         <h2 class="item-information-label">商品の情報</h2>
 
         <!-- カテゴリ一覧 -->
@@ -47,6 +45,46 @@
             <span class="condition-label">商品の状態</span>
             <span class="condition"><?php echo e($item->condition); ?></span>
         </div>
+
+        <!-- コメント一覧 -->
+        <h2 class="comment-label">コメント（<?php echo e($item->comments()->count()); ?>）</h2>
+        <div class="comments-section">
+        <?php $__currentLoopData = $item->comments()->latest()->get(); $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $comment): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+            <div class="comment">
+                <div class="user-info">
+                    <div class="user-image-container">
+                        <img src="<?php echo e(asset('storage/' . $comment->user->profile_image)); ?>" class="user-image">
+                    </div>
+                    <span class="user-name"><?php echo e($comment->user->name); ?></span>
+                </div>
+                <div class="comment-content">
+                    <p><?php echo e($comment->content); ?></p>
+                </div>
+            </div>
+        <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+        </div>
+
+        <!-- コメント投稿フォーム -->
+        <?php if(Auth::check()): ?>
+            <div class="comment-form">
+                <form action="<?php echo e(route('comments.store', ['item_id' => $item->id])); ?>" method="POST">
+                    <?php echo csrf_field(); ?>
+                    <label for="comment-content" class="comment-form-label">商品へのコメント</label>
+                    <textarea name="content" rows="3" required maxlength="255"><?php echo e(old('content')); ?></textarea>
+                    <?php $__errorArgs = ['content'];
+$__bag = $errors->getBag($__errorArgs[1] ?? 'default');
+if ($__bag->has($__errorArgs[0])) :
+if (isset($message)) { $__messageOriginal = $message; }
+$message = $__bag->first($__errorArgs[0]); ?>
+                        <p class="error-message"><?php echo e($message); ?></p>
+                    <?php unset($message);
+if (isset($__messageOriginal)) { $message = $__messageOriginal; }
+endif;
+unset($__errorArgs, $__bag); ?>
+                    <button type="submit" class="submit-button">コメントを送信する</button>
+                </form>
+            </div>
+        <?php endif; ?>
     </div>
 </div>
 <?php $__env->stopSection(); ?>

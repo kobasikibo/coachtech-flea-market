@@ -1,19 +1,17 @@
-/* item-detailを左右に分割 */
 .item-detail {
-    display: flex; /* 左右に要素を並べる */
-    justify-content: space-between; /* 余白を均等に */
-    align-items: flex-start; /* 上側で揃える */
-    gap: 100px;
-    padding: 100px;
-    width: 100%; /* 親要素いっぱいに広げる */
-    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    width: 100%;
+    padding: 5%;
+    gap: 10%;
 }
 
 .item-image-container {
     flex: 1;
     aspect-ratio: 1 / 1;
+    max-width: 40vw;
     background-color: rgba(217, 217, 217, 0.2);
-    margin-top: 30px;
 }
 
 .item-image {
@@ -54,8 +52,8 @@
 
 /* アイコンのスタイル */
 .item-icons {
-    display: flex; /* アイコンを横並びにする */
-    gap: 40px; /* アイコン間のスペース */
+    display: flex;
+    gap: 40px;
 }
 
 .like-button {
@@ -67,6 +65,7 @@
     align-items: center;
     margin-left: 40px;
     text-decoration: none;
+    padding: 0;
 }
 
 .icon {
@@ -75,10 +74,19 @@
     margin-bottom: 8px;
 }
 
-.likes-count {
+.likes-count,
+.comments-count {
     font-size: 18px;
     font-weight: 700;
     color: rgba(0, 0, 0, 1);
+    line-height: 1;
+    font-family: 'Inter', sans-serif;
+}
+
+.comment-icon {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 .liked .icon {
@@ -142,4 +150,94 @@
 .item-condition {
     font-size: 18px; /* 商品状態のフォントサイズ */
     font-weight: 400;
+}
+
+.comment-label {
+    font-size: 36px; /* ラベルのフォントサイズ */
+    font-weight: 700;
+    color: rgba(95, 95, 95, 1);
+}
+
+.comments-section {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    max-height: 400px;
+    overflow-y: auto;
+    padding-right: 15px;
+}
+
+.user-info {
+    display: flex;
+    align-items: center;
+}
+
+.user-image-container {
+    width: 70px;
+    height: 70px;
+    border-radius: 50%;
+    background-color: rgba(217, 217, 217, 1);
+    overflow: hidden;
+    margin-right: 18px;
+}
+
+.user-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.user-name {
+    font-size: 30px;
+    font-weight: 700;
+}
+
+.comment-content {
+    display: flex;
+    align-items: center;
+    height: 70px;
+    padding: 15px;
+    margin: 22px 0;
+    border-radius: 5px;
+    font-size: 20px;
+    font-weight: 300;
+    background-color: rgba(229, 229, 229, 1);
+}
+
+.comment-form {
+    display: flex; /* Flexboxを使用 */
+    flex-direction: column; /* 縦方向に並べる */
+    width: 100%; /* 横いっぱいに広げる */
+    gap: 10px; /* 要素間の隙間を設定 */
+}
+
+.comment-form-label {
+    font-size: 28px;
+    font-weight: 700;
+    color: rgba(0, 0, 0, 1);
+}
+
+.comment-form textarea {
+    width: 100%;
+    height: 246px;
+    padding: 10px;
+    border: 2px solid rgba(95, 95, 95, 1);
+    border-radius: 5px;
+    margin-bottom: 48px;
+}
+
+.submit-button {
+    width: 100%;
+    padding: 10px;
+    border: none;
+    background-color: rgba(255, 85, 85, 1);
+    color: rgba(255, 255, 255, 1);
+    font-size: 25px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s; /* ホバー時のトランジション */
+}
+
+.submit-button:hover {
+    background-color: rgba(200, 30, 30, 1);
 }
