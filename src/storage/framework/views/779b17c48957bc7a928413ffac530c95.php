@@ -28,6 +28,12 @@
             </div>
         </div>
 
+        <?php if(Auth::check()): ?>
+            <div class="purchase-button-container">
+                <a href="<?php echo e(route('purchase.show', ['item_id' => $item->id])); ?>" class="submit-button">購入手続きへ</a>
+            </div>
+        <?php endif; ?>
+
         <h2 class="item-description-label">商品説明</h2>
         <p class="item-description"><?php echo e($item->description); ?></p>
 

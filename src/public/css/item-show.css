@@ -236,6 +236,9 @@
     border-radius: 5px;
     cursor: pointer;
     transition: background-color 0.3s; /* ホバー時のトランジション */
+    display: inline-block;
+    text-align: center;
+    text-decoration: none;
 }
 
 .submit-button:hover {

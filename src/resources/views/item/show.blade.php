@@ -30,6 +30,12 @@
             </div>
         </div>
 
+        @if (Auth::check())
+            <div class="purchase-button-container">
+                <a href="{{ route('purchase.show', ['item_id' => $item->id]) }}" class="submit-button">購入手続きへ</a>
+            </div>
+        @endif
+
         <h2 class="item-description-label">商品説明</h2>
         <p class="item-description">{{ $item->description }}</p>
 
