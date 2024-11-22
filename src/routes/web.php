@@ -6,7 +6,7 @@ use App\Http\Controllers\Auth\RegisterController;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\CommentController;
-
+use App\Http\Controllers\PurchaseController;
 
 Route::get('/', [ItemController::class, 'index'])->name('item.index');
 Route::get('/item/{item_id}', [ItemController::class, 'show'])->name('item.show');
@@ -20,6 +20,11 @@ Route::middleware('auth')->group(function () {
 
     Route::get('/sell', [ItemController::class, 'create'])->name('item.create');
     Route::post('/sell', [ItemController::class, 'store'])->name('item.store');
+
+    Route::get('/purchase/{item_id}', [PurchaseController::class, 'show'])->name('purchase.show');
+    Route::post('/purchase/{item_id}', [PurchaseController::class, 'store'])->name('purchase.store');
+    Route::get('/purchase/address/{item_id}', [PurchaseController::class, 'editAddress'])->name('purchase.address.edit');
+    Route::post('/purchase/address/{item_id}', [PurchaseController::class, 'updateAddress'])->name('purchase.address.update');
 });
 
 Route::post('/items/{item}/like', [ItemController::class, 'like'])->name('item.like');

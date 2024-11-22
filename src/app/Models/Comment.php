@@ -11,13 +11,11 @@ class Comment extends Model
 
     protected $fillable = ['content', 'item_id', 'user_id'];
 
-    // Itemへのリレーション
     public function item()
     {
         return $this->belongsTo(Item::class);
     }
 
-    // Userへのリレーション
     public function user()
     {
         return $this->belongsTo(User::class);

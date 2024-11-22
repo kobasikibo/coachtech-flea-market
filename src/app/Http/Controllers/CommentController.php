@@ -13,11 +13,10 @@ class CommentController extends Controller
     {
         $item = Item::findOrFail($item_id);
 
-        // コメントを作成
         $comment = new Comment();
         $comment->user_id = Auth::id();
         $comment->item_id = $item->id;
-        $comment->content = $request->input('content'); // 修正: 'content'を取得
+        $comment->content = $request->input('content');
         $comment->save();
 
         // コメントカウントの取得

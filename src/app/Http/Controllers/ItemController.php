@@ -66,7 +66,7 @@ class ItemController extends Controller
 
         $item->categories()->attach($request->category_ids);
 
-        return redirect()->route('item.index')->with('success', '商品を出品しました。');
+        return redirect()->route('item.index');
     }
 
     public function like(Item $item)

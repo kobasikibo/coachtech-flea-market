@@ -11,7 +11,6 @@ class LoginController extends Controller
     public function login(LoginRequest $request)
     {
         if (Auth::attempt($request->only('email', 'password'))) {
-            // 認証成功
             return redirect()->intended('/');
         }
 
