@@ -117,7 +117,7 @@ select[name="payment_method"] {
     border-bottom: 1px solid rgba(0, 0, 0, 1);
 }
 
-.label {
+.summary-label {
     font-size: 1.2em;
     flex: 1;
     display: flex;
@@ -125,7 +125,7 @@ select[name="payment_method"] {
     margin: 10% auto 10% auto;
 }
 
-.value {
+.summary-value {
     font-size: 1.5em;
     flex: 1;
     display: flex;

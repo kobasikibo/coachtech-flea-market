@@ -22,10 +22,7 @@ class PurchaseController extends Controller
         $validated = $request->validated();
         $item = Item::findOrFail($request->item_id);
 
-        // Stripe決済処理
-        if ($validated['payment_method'] === 'card') {
-            $stripeService->charge($item->price, $request->stripeToken);
-        }
+        dd($validated, $item);
 
         Purchase::create([
             'user_id' => Auth::id(),
@@ -35,6 +32,10 @@ class PurchaseController extends Controller
             'temp_address' => $validated['address'],
             'temp_building' => $validated['building']
         ]);
+
+        if ($validated['payment_method'] === 'card') {
+            $stripeService->charge($item->price, $request->stripeToken);
+        }
 
         return redirect('/');
     }
