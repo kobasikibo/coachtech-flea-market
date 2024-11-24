@@ -6,8 +6,8 @@
     <div class="profile-container">
         <div class="user-info">
             <div class="image-container">
-                <?php if($user->image_path): ?>
-                    <img src="<?php echo e(asset('storage/' . $user->image_path)); ?>" alt="User Image" class="user-image">
+                <?php if($user->profile_image): ?>
+                    <img src="<?php echo e(asset('storage/' . $user->profile_image)); ?>" class="user-image">
                 <?php endif; ?>
             </div>
             <div class="user-name"><?php echo e($user->name); ?></div>

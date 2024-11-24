@@ -1,13 +1,16 @@
+.container {
+    width: 45%;
+    margin: 3% auto;
+}
+
 h1 {
     text-align: center;
     font-size: 2.25vw;
     font-weight: 700;
-    margin-bottom: 10%;
 }
 
-.container {
-    width: 50%;
-    margin: 3% auto;
+.form-group:first-of-type {
+    margin-top: 10%;
 }
 
 .form-group {
@@ -16,18 +19,26 @@ h1 {
 
 .form-group label {
     display: block;
-    font-size: 1.5vw;
-    font-weight: 700;
     margin-bottom: 0.5%;
     text-align: left;
+    font-size: 1.5vw;
+    font-weight: 700;
 }
 
 .form-group input {
     width: 100%;
-    padding: 1.2%;
+    padding: 0.8vw;
+    font-size: 1.5vw;
+    font-weight: 700;
+    color: rgba(0, 0, 0, 1);
     border: 1px solid rgba(95, 95, 95, 1);
     border-radius: 3px;
     box-sizing: border-box;
+}
+
+.form-group input::placeholder {
+    color: rgba(95, 95, 95, 1);
+    opacity: 1;
 }
 
 .form-group input:focus {

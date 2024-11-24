@@ -8,8 +8,8 @@
     <div class="profile-container">
         <div class="user-info">
             <div class="image-container">
-                @if($user->image_path)
-                    <img src="{{ asset('storage/' . $user->image_path) }}" alt="User Image" class="user-image">
+                @if($user->profile_image)
+                    <img src="{{ asset('storage/' . $user->profile_image) }}" class="user-image">
                 @endif
             </div>
             <div class="user-name">{{ $user->name }}</div>
