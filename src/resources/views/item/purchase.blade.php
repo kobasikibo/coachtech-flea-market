@@ -33,14 +33,12 @@
         <div class="form-group">
             <div class="address-label">
                 <div class="address">配送先</div>
-                <a href="{{ route('purchase.address.edit', ['item_id' => $item->id]) }}" class="btn-change-address" >
-                変更する
-                </a>
+                <a href="{{ route('purchase.address.edit', ['item_id' => $item->id]) }}" class="btn-change-address">変更する</a>
             </div>
             <div class="address-info">
-                <p>〒 {{ old('zip_code', $tempZipCode ?? $address->zip_code ?? '未登録') }}</p>
-                <p>{{ old('address', $tempAddress ?? $address->address ?? '未登録') }}</p>
-                <p>{{ old('building', $tempBuilding ?? $address->building ?? '未登録') }}</p>
+                <p>〒 {{ $tempZipCode ?? $address['zip_code'] ?? '未登録' }}</p>
+                <p>{{ $tempAddress ?? $address['address'] ?? '未登録' }}</p>
+                <p>{{ $tempBuilding ?? $address['building'] ?? '未登録' }}</p>
             </div>
         </div>
     </div>
@@ -53,14 +51,10 @@
             </div>
             <div class="summary-item">
                 <p class="summary-label">支払い方法</p>
-                <p class="summary-value">
-                    <span id="payment-method-display">未選択</span>
-                </p>
+                <p class="summary-value"><span id="payment-method-display">未選択</span></p>
             </div>
         </div>
-        <div id="card-element" class="card-element">
-            <!-- Stripeのカード入力フィールドがここに表示されます -->
-        </div>
+        <div id="card-element" class="card-element"></div>
         <div id="card-errors" class="card-errors" role="alert"></div>
         <input type="hidden" name="stripeToken" id="stripe-token">
         <button type="submit" class="btn-purchase">購入する</button>
