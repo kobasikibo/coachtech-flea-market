@@ -38,9 +38,9 @@
                 </a>
             </div>
             <div class="address-info">
-                <p>〒 {{ $address->zip_code ?? '未登録' }}</p>
-                <p>{{ $address->address ?? '未登録' }}</p>
-                <p>{{ $address->building ?? '未登録' }}</p>
+                <p>〒 {{ old('zip_code', $tempZipCode ?? $address->zip_code ?? '未登録') }}</p>
+                <p>{{ old('address', $tempAddress ?? $address->address ?? '未登録') }}</p>
+                <p>{{ old('building', $tempBuilding ?? $address->building ?? '未登録') }}</p>
             </div>
         </div>
     </div>

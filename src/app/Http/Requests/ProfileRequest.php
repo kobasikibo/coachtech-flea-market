@@ -15,6 +15,7 @@ class ProfileRequest extends FormRequest
     {
         return [
             'profile_image' => 'nullable|image|mimes:jpeg,png',
+            'name' => 'required',
         ];
     }
 
@@ -23,6 +24,7 @@ class ProfileRequest extends FormRequest
         return [
             'profile_image.image' => 'プロフィール画像は画像ファイルを選択してください',
             'profile_image.mimes' => 'プロフィール画像はJPEGまたはPNG形式である必要があります',
+            'name.required' => 'お名前を入力してください',
         ];
     }
 }

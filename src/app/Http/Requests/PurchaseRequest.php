@@ -14,10 +14,11 @@ class PurchaseRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'payment_method' => 'required',
-            'temp_zip_code' => 'required|regex:/^\d{3}-\d{4}$/',
-            'temp_address' => 'required',
-            'temp_building' => 'required',
+            'item_id' => 'required|exists:items,id',
+            'payment_method' => 'required|in:convenience,card',
+            'zip_code' => 'nullable|regex:/^\d{3}-\d{4}$/',
+            'address' => 'nullable|string|max:255',
+            'building' => 'nullable|string|max:255',
         ];
     }
 

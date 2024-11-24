@@ -36,9 +36,9 @@
                 </a>
             </div>
             <div class="address-info">
-                <p>〒 <?php echo e($address->zip_code ?? '未登録'); ?></p>
-                <p><?php echo e($address->address ?? '未登録'); ?></p>
-                <p><?php echo e($address->building ?? '未登録'); ?></p>
+                <p>〒 <?php echo e(old('zip_code', $tempZipCode ?? $address->zip_code ?? '未登録')); ?></p>
+                <p><?php echo e(old('address', $tempAddress ?? $address->address ?? '未登録')); ?></p>
+                <p><?php echo e(old('building', $tempBuilding ?? $address->building ?? '未登録')); ?></p>
             </div>
         </div>
     </div>

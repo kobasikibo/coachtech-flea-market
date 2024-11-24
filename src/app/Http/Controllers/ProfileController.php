@@ -59,7 +59,7 @@ class ProfileController extends Controller
         }
 
         // ユーザー名の更新
-        $this->user->name = $addressRequest->input('name');
+        $this->user->name = $profileRequest->input('name');
         $this->user->save();
 
         // 住所情報の更新
