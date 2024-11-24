@@ -39,11 +39,12 @@ body {
 
 .search-form input {
     width: 35vw;
-    padding: 1.5% 5% 1.5% 5%;
+    padding: 2% 5% 2% 5%;
     font-size: 1.5vw;
     font-weight: 400;
+    color: rgba(0, 0, 0, 1);
     border: 1px solid rgba(0, 0, 0, 1);
-    border-radius: 5px;
+    border-radius: 3px;
 }
 
 .header__links {
@@ -60,22 +61,22 @@ body {
     cursor: pointer;
     transition: background-color 0.3s;
     white-space: nowrap;
-    padding-top: 5%;
-    padding-bottom: 5%;
+    padding-top: 6.5%;
+    padding-bottom: 6.5%;
 }
 
 .link-style-button:hover {
     background-color: rgba(255, 255, 255, 0.2);
-    border-radius: 5px;
-    padding-top: 5%;
-    padding-bottom: 5%;
+    border-radius: 2px;
+    padding-top: 6.5%;
+    padding-bottom: 6.5%;
 }
 
 .link-mypage,
 .link-login {
     text-decoration: none;
     color: rgba(255, 255, 255, 1);
-    padding: 2% 5%;
+    padding: 3% 5%;
     transition: background-color 0.3s;
     white-space: nowrap;
 }
@@ -83,15 +84,15 @@ body {
 .link-login:hover,
 .link-mypage:hover {
     background-color: rgba(255, 255, 255, 0.2);
-    border-radius: 5px;
+    border-radius: 2px;
 }
 
 .link-sell {
     text-decoration: none;
     color: rgba(0, 0, 0, 1);
     background-color: rgba(255, 255, 255, 1);
-    border-radius: 5px;
-    padding: 2% 10%;
+    border-radius: 2px;
+    padding: 3% 10%;
     margin-left: 5%;
     transition: background-color 0.3s;
     white-space: nowrap;

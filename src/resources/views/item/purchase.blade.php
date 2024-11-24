@@ -24,7 +24,7 @@
         <div class="form-group">
             <label for="payment_method" class="payment-label">支払い方法</label>
             <select name="payment_method" id="payment_method" required>
-                <option value="">選択してください</option>
+                <option value="" disabled selected hidden>選択してください</option>
                 <option value="convenience" {{ old('payment_method') === 'convenience' ? 'selected' : '' }}>コンビニ支払い</option>
                 <option value="card" {{ old('payment_method') === 'card' ? 'selected' : '' }}>カード支払い</option>
             </select>
