@@ -18,7 +18,7 @@
             </div>
             <label class="file-label">
                 画像を選択する
-                <input type="file" name="profile-image" class="profile-image">
+                <input type="file" name="profile_image" class="profile-image">
             </label>
 
             <?php $__errorArgs = ['profile_image'];

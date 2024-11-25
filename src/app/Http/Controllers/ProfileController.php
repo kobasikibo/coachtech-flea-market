@@ -52,17 +52,14 @@ class ProfileController extends Controller
 
     public function update(ProfileRequest $profileRequest, AddressRequest $addressRequest)
     {
-        // プロフィール画像の保存
         if ($profileRequest->hasFile('profile_image')) {
-            $path = $profileRequest->file('profile_image')->store('public/profiles');
-            $this->user->profile_image = Storage::url($path);
+            $path = $profileRequest->file('profile_image')->store('profiles', 'public');
+            $this->user->profile_image = $path;
         }
 
-        // ユーザー名の更新
         $this->user->name = $profileRequest->input('name');
         $this->user->save();
 
-        // 住所情報の更新
         $address = $this->user->address ?? new Address();
         $address->zip_code = $addressRequest->input('zip_code');
         $address->address = $addressRequest->input('address');
