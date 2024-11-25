@@ -1,5 +1,5 @@
 <?php $__env->startSection('css'); ?>
-    <link rel="stylesheet" href="<?php echo e(asset('css/register.css')); ?>" />
+    <link rel="stylesheet" href="<?php echo e(asset('css/form-styles.css')); ?>" />
 <?php $__env->stopSection(); ?>
 
 <?php $__env->startSection('content'); ?>
