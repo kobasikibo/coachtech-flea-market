@@ -14,19 +14,23 @@ class ItemController extends Controller
     public function index(SearchRequest $request)
     {
         $query = $request->get('query');
-        $userId = Auth::id();
         $tab = $request->query('tab', 'recommend');  // デフォルトは'recommend'タブ
 
-        if ($tab === 'mylist' && Auth::check()) {
-            // マイリスト：ユーザーが「いいね」した商品に検索条件を適用
-            $itemsQuery = Auth::user()->likes()->when($query, function ($queryBuilder) use ($query) {
-                return $queryBuilder->where('name', 'like', '%' . $query . '%');
-            });
+        if ($tab === 'mylist') {
+            if (Auth::check()) {
+                // マイリスト：ユーザーが「いいね」した商品
+                $itemsQuery = Auth::user()->likes()->when($query, function ($queryBuilder) use ($query) {
+                    return $queryBuilder->where('name', 'like', '%' . $query . '%');
+                });
+            } else {
+                // 未認証の場合、空のリストを返す
+                $itemsQuery = Item::whereRaw('0 = 1');
+            }
         } else {
             // おすすめ：自分の出品を除外し、検索条件を適用
             $itemsQuery = Item::when($query, function ($queryBuilder) use ($query) {
                 return $queryBuilder->where('name', 'like', '%' . $query . '%');
-            })->where('user_id', '!=', $userId);
+            })->where('user_id', '!=', Auth::id());
         }
 
         $items = $itemsQuery->get();

@@ -1,5 +1,5 @@
 <?php $__env->startSection('css'); ?>
-    <link rel="stylesheet" href="<?php echo e(asset('css/address-edit.css')); ?>" />
+    <link rel="stylesheet" href="<?php echo e(asset('css/form-styles.css')); ?>" />
 <?php $__env->stopSection(); ?>
 
 <?php $__env->startSection('content'); ?>
@@ -47,7 +47,7 @@ endif;
 unset($__errorArgs, $__bag); ?>
         </div>
 
-        <button type="submit" class="btn-update">更新する</button>
+        <button type="submit" class="btn-submit">更新する</button>
     </form>
 <?php $__env->stopSection(); ?>
 

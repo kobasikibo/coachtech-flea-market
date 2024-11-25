@@ -64,7 +64,7 @@
             @enderror
         </div>
 
-        <button type="submit" class="btn-update">更新する</button>
+        <button type="submit" class="btn-submit">更新する</button>
     </form>
 @endsection
 

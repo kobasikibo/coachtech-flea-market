@@ -51,6 +51,10 @@ body {
     opacity: 1;
 }
 
+.search-form input:focus::placeholder {
+    color: transparent;
+}
+
 .header__links {
     display: flex;
     align-items: center;
