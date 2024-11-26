@@ -1,4 +1,5 @@
 <?php $__env->startSection('css'); ?>
+    <link rel="stylesheet" href="<?php echo e(asset('css/exhibition.css')); ?>" />
     <link rel="stylesheet" href="<?php echo e(asset('css/profile-show.css')); ?>" />
 <?php $__env->stopSection(); ?>
 
@@ -22,7 +23,9 @@
         <div class="item-list">
             <?php $__currentLoopData = $items; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $item): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                 <div class="item">
-                    <img src="<?php echo e(asset('storage/' . $item->image_path)); ?>" alt="<?php echo e($item->name); ?>" class="item-image">
+                    <a href="<?php echo e(route('item.show', ['item_id' => $item->id])); ?>">
+                        <img src="<?php echo e(asset('storage/' . $item->image_path)); ?>" alt="<?php echo e($item->name); ?>">
+                    </a>
                     <div class="item-name"><?php echo e($item->name); ?></div>
                 </div>
             <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>

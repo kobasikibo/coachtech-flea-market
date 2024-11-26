@@ -1,6 +1,7 @@
 @extends('layouts.app')
 
 @section('css')
+    <link rel="stylesheet" href="{{ asset('css/exhibition.css') }}" />
     <link rel="stylesheet" href="{{ asset('css/profile-show.css') }}" />
 @endsection
 
@@ -24,7 +25,9 @@
         <div class="item-list">
             @foreach($items as $item)
                 <div class="item">
-                    <img src="{{ asset('storage/' . $item->image_path) }}" alt="{{ $item->name }}" class="item-image">
+                    <a href="{{ route('item.show', ['item_id' => $item->id]) }}">
+                        <img src="{{ asset('storage/' . $item->image_path) }}" alt="{{ $item->name }}">
+                    </a>
                     <div class="item-name">{{ $item->name }}</div>
                 </div>
             @endforeach

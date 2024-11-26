@@ -2,20 +2,20 @@
     display: flex;
     justify-content: space-between;
     align-items: flex-start;
-    width: 100%;
-    padding: 5%;
-    gap: 10%;
+    padding: 6%;
 }
 
 .item-image-container {
     flex: 1;
     aspect-ratio: 1 / 1;
-    max-width: 40vw;
+    width: 40%;
     background-color: rgba(217, 217, 217, 0.2);
+    margin-top: 1.5%;
+    margin-right: 7%;
 }
 
 .item-image {
-    max-width: 100%;
+    width: 100%;
     object-fit: cover;
 }
 
@@ -23,37 +23,35 @@
     flex: 1;
     display: flex;
     flex-direction: column;
-    gap: 15px; /* 各情報の間のスペース */
 }
 
-/* 商品名 */
 .item-name {
-    font-size: 45px;
+    font-size: 2.8vw;
     font-weight: 700;
+    margin-bottom: 1%;
 }
 
-/* ブランド名 */
 .brand-name {
-    font-size: 24px; /* ブランド名のスタイル */
+    font-size: 1.6vw;
     font-weight: 400;
+    margin-bottom: 3%;
 }
 
-/* 価格のスタイル */
 .price {
-    font-size: 30px;
+    font-size: 1.9vw;
     font-weight: 400;
+    margin-bottom: 3%;
 }
 
 /* 価格の数値部分 */
 .price .value {
-    font-size: 45px;
+    font-size: 2.8vw;
     font-weight: 400;
 }
 
-/* アイコンのスタイル */
 .item-icons {
     display: flex;
-    gap: 40px;
+    gap: 8%;
 }
 
 .like-button {
@@ -63,23 +61,20 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    margin-left: 40px;
+    margin-left: 8%;
     text-decoration: none;
-    padding: 0;
 }
 
 .icon {
-    width: 40px;
-    height: 40px;
-    margin-bottom: 8px;
+    width: 2.4vw;
+    height: auto;
 }
 
 .likes-count,
 .comments-count {
-    font-size: 18px;
+    font-size: 1.2vw;
     font-weight: 700;
     color: rgba(0, 0, 0, 1);
-    line-height: 1;
     font-family: 'Inter', sans-serif;
 }
 
@@ -93,22 +88,43 @@
     filter: invert(72%) sepia(26%) saturate(6428%) hue-rotate(1deg) brightness(105%) contrast(102%);
 }
 
-/* 商品説明ラベル */
+.submit-button {
+    width: 100%;
+    margin-top: 3%;
+    border: none;
+    background-color: rgba(255, 85, 85, 1);
+    color: rgba(255, 255, 255, 1);
+    font-size: 1.9vw;
+    font-weight: 700;
+    border-radius: 0.3vw;
+    padding: 1%;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    display: inline-block;
+    text-align: center;
+    text-decoration: none;
+}
+
+.submit-button:hover {
+    background-color: rgba(200, 30, 30, 1);
+}
+
 .item-description-label {
-    font-size: 36px; /* ラベルのフォントサイズ */
+    font-size: 2.24vw;
     font-weight: 700;
+    margin-top: 4%;
 }
 
-/* 商品説明のスタイル */
 .item-description {
-    font-size: 18px; /* 説明文のスタイル */
+    font-size: 1.5vw;
     font-weight: 400;
+    margin-top: 2%;
 }
 
-/* 商品情報ラベル */
 .item-information-label {
-    font-size: 36px; /* ラベルのフォントサイズ */
+    font-size: 2.24vw;
     font-weight: 700;
+    margin-top: 8%;
 }
 
 /* カテゴリーのスタイル */
@@ -120,9 +136,8 @@
 }
 
 .category-label {
-    font-size: 24px; /* 商品状態のフォントサイズ */
+    font-size: 1.5vw;
     font-weight: 700;
-    margin-right: 30px;
 }
 
 .category-name {
@@ -224,23 +239,4 @@
     border: 2px solid rgba(95, 95, 95, 1);
     border-radius: 5px;
     margin-bottom: 48px;
-}
-
-.submit-button {
-    width: 100%;
-    padding: 10px;
-    border: none;
-    background-color: rgba(255, 85, 85, 1);
-    color: rgba(255, 255, 255, 1);
-    font-size: 25px;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: background-color 0.3s; /* ホバー時のトランジション */
-    display: inline-block;
-    text-align: center;
-    text-decoration: none;
-}
-
-.submit-button:hover {
-    background-color: rgba(200, 30, 30, 1);
 }

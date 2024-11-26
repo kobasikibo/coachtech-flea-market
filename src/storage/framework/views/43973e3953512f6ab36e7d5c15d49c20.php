@@ -1,4 +1,5 @@
 <?php $__env->startSection('css'); ?>
+    <link rel="stylesheet" href="<?php echo e(asset('css/exhibition.css')); ?>" />
     <link rel="stylesheet" href="<?php echo e(asset('css/item-index.css')); ?>" />
 <?php $__env->stopSection(); ?>
 
