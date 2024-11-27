@@ -32,7 +32,7 @@
 }
 
 .brand-name {
-    font-size: 1.6vw;
+    font-size: 1.24vw;
     font-weight: 400;
     margin-bottom: 3%;
 }
@@ -72,10 +72,11 @@
 
 .likes-count,
 .comments-count {
-    font-size: 1.2vw;
+    font-size: 1.4vw;
     font-weight: 700;
     color: rgba(0, 0, 0, 1);
     font-family: 'Inter', sans-serif;
+    margin-top: 0.1vw;
 }
 
 .comment-icon {
@@ -90,7 +91,7 @@
 
 .submit-button {
     width: 100%;
-    margin-top: 3%;
+    margin: 3% auto;
     border: none;
     background-color: rgba(255, 85, 85, 1);
     color: rgba(255, 255, 255, 1);
@@ -118,7 +119,7 @@
 .item-description {
     font-size: 1.5vw;
     font-weight: 400;
-    margin-top: 2%;
+    margin-top: 8%;
 }
 
 .item-information-label {
@@ -127,50 +128,62 @@
     margin-top: 8%;
 }
 
-/* カテゴリーのスタイル */
 .item-categories {
-    display: flex; /* 横並びにする */
-    gap: 20px; /* カテゴリー間のスペース */
-    align-items: center;
-    flex-wrap: wrap;
+    display: flex;
+    align-items: flex-start;
+    gap: 1rem; /* ラベルとカテゴリ間の余白 */
 }
 
 .category-label {
+    white-space: nowrap;
     font-size: 1.5vw;
     font-weight: 700;
+    margin-right: 3vw;
+    margin-top: 1.4vw;
+    padding-top: 0.1vw
+}
+
+.categories {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1.8vw;
+    align-content: flex-start;
+    margin-top: 1.4vw;
 }
 
 .category-name {
     white-space: nowrap;
     color: rgba(0, 0, 0, 1);
     background-color: rgba(217, 217, 217, 1);
-    font-size: 20px;
+    font-size: 1.5vw;
     font-weight: 400;
-    border-radius: 30px;
-    padding: 5px 10px;
+    border-radius: 10vw;
+    padding: 0.1vw 2.5vw;
 }
 
 .item-condition {
-    display: flex; /* 横並びにする */
-    gap: 80px; /* カテゴリー間のスペース */
+    display: flex;
     align-items: center;
+    margin-top: 1.5vw;
 }
 
 .condition-label {
-    font-size: 24px; /* 商品状態のフォントサイズ */
+    font-size: 1.5vw;
     font-weight: 700;
+    margin-right: 7vw;
 }
 
-/* 商品の状態 */
 .item-condition {
-    font-size: 18px; /* 商品状態のフォントサイズ */
+    font-size: 1.5vw;
     font-weight: 400;
 }
 
 .comment-label {
-    font-size: 36px; /* ラベルのフォントサイズ */
+    font-size: 2.24vw;
     font-weight: 700;
     color: rgba(95, 95, 95, 1);
+    margin-top: 8%;
+    margin-bottom: 1%;
 }
 
 .comments-section {
@@ -179,7 +192,7 @@
     gap: 20px;
     max-height: 400px;
     overflow-y: auto;
-    padding-right: 15px;
+    margin-top: 4%;
 }
 
 .user-info {
@@ -188,55 +201,56 @@
 }
 
 .user-image-container {
-    width: 70px;
-    height: 70px;
+    width: 12%;
+    height: auto;
     border-radius: 50%;
     background-color: rgba(217, 217, 217, 1);
     overflow: hidden;
-    margin-right: 18px;
+    margin-right: 1vw;
+    margin-bottom: 1vw;
 }
 
 .user-image {
     width: 100%;
-    height: 100%;
+    height: auto;
     object-fit: cover;
 }
 
 .user-name {
-    font-size: 30px;
+    font-size: 1.9vw;
     font-weight: 700;
 }
 
 .comment-content {
     display: flex;
     align-items: center;
-    height: 70px;
-    padding: 15px;
-    margin: 22px 0;
-    border-radius: 5px;
-    font-size: 20px;
+    height: 5vw;
+    padding: 5% 3%;
+    margin: 1vw 0;
+    border-radius: 0.3vw;
+    font-size: 1.5vw;
     font-weight: 300;
     background-color: rgba(229, 229, 229, 1);
 }
 
 .comment-form {
-    display: flex; /* Flexboxを使用 */
-    flex-direction: column; /* 縦方向に並べる */
-    width: 100%; /* 横いっぱいに広げる */
-    gap: 10px; /* 要素間の隙間を設定 */
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    margin-top: 3vw;
 }
 
 .comment-form-label {
-    font-size: 28px;
+    font-size: 1.8vw;
     font-weight: 700;
     color: rgba(0, 0, 0, 1);
 }
 
 .comment-form textarea {
     width: 100%;
-    height: 246px;
-    padding: 10px;
+    height: 18vw;
+    padding: 3%;
     border: 2px solid rgba(95, 95, 95, 1);
-    border-radius: 5px;
-    margin-bottom: 48px;
+    border-radius: 0.3vw;
+    margin-bottom: 5%;
 }

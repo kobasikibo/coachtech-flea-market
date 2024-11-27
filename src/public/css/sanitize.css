@@ -95,7 +95,10 @@ margin: 0;
 * 1. Add the correct sizing in Firefox.
 * 2. Show the overflow in Edge 18- and IE.
 */
-p {
+p,
+h1,
+h2,
+div {
     padding: 0;
     margin: 0;
 }

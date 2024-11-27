@@ -44,9 +44,11 @@
         <!-- カテゴリ一覧 -->
         <div class="item-categories">
             <span class="category-label">カテゴリー</span>
-            @foreach ($item->categories as $category)
-                <span class="category-name">{{ $category->name }}</span>
-            @endforeach
+            <div class="categories">
+                @foreach ($item->categories as $category)
+                    <span class="category-name">{{ $category->name }}</span>
+                @endforeach
+            </div>
         </div>
 
         <div class="item-condition">

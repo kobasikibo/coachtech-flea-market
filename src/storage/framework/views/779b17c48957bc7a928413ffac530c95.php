@@ -42,9 +42,11 @@
         <!-- カテゴリ一覧 -->
         <div class="item-categories">
             <span class="category-label">カテゴリー</span>
-            <?php $__currentLoopData = $item->categories; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $category): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-                <span class="category-name"><?php echo e($category->name); ?></span>
-            <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+            <div class="categories">
+                <?php $__currentLoopData = $item->categories; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $category): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                    <span class="category-name"><?php echo e($category->name); ?></span>
+                <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+            </div>
         </div>
 
         <div class="item-condition">
