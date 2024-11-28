@@ -16,8 +16,7 @@
             <div class="image-container">
                 <img
                     src="{{ $user->profile_image ? asset('storage/' . $user->profile_image) : '' }}"
-                    class="image-preview"
-                    style="{{ $user->profile_image ? '' : 'display: none;' }}">
+                    class="image-preview">
             </div>
             <label class="file-label">
                 画像を選択する

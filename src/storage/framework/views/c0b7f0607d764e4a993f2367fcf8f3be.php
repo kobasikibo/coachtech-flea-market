@@ -14,8 +14,7 @@
             <div class="image-container">
                 <img
                     src="<?php echo e($user->profile_image ? asset('storage/' . $user->profile_image) : ''); ?>"
-                    class="image-preview"
-                    style="<?php echo e($user->profile_image ? '' : 'display: none;'); ?>">
+                    class="image-preview">
             </div>
             <label class="file-label">
                 画像を選択する
