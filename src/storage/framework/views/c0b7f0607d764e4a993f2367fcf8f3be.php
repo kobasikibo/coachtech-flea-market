@@ -12,13 +12,14 @@
 
         <div class="image-group">
             <div class="image-container">
-                <?php if($user->profile_image): ?>
-                    <img src="<?php echo e(asset('storage/' . $user->profile_image)); ?>" class="user-image">
-                <?php endif; ?>
+                <img
+                    src="<?php echo e($user->profile_image ? asset('storage/' . $user->profile_image) : ''); ?>"
+                    class="image-preview"
+                    style="<?php echo e($user->profile_image ? '' : 'display: none;'); ?>">
             </div>
             <label class="file-label">
                 画像を選択する
-                <input type="file" name="profile_image" class="profile-image">
+                <input type="file" name="profile_image" class="image-input" >
             </label>
 
             <?php $__errorArgs = ['profile_image'];

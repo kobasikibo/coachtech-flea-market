@@ -14,13 +14,14 @@
 
         <div class="image-group">
             <div class="image-container">
-                @if($user->profile_image)
-                    <img src="{{ asset('storage/' . $user->profile_image) }}" class="user-image">
-                @endif
+                <img
+                    src="{{ $user->profile_image ? asset('storage/' . $user->profile_image) : '' }}"
+                    class="image-preview"
+                    style="{{ $user->profile_image ? '' : 'display: none;' }}">
             </div>
             <label class="file-label">
                 画像を選択する
-                <input type="file" name="profile_image" class="profile-image">
+                <input type="file" name="profile_image" class="image-input" >
             </label>
 
             @error('profile_image')
