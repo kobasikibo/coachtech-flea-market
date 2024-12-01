@@ -7,6 +7,12 @@
 @section('content')
     <h1>ログイン</h1>
 
+    @if(session('message'))
+        <div class="error">
+            {{ session('message') }}
+        </div>
+    @endif
+
     <form method="POST" action="{{ route('login') }}" novalidate>
         @csrf
 

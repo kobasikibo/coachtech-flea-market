@@ -10,7 +10,7 @@ use Illuminate\Support\Facades\Auth;
 use Stripe\Stripe;
 use Stripe\Checkout\Session;
 
-class PaymentController extends Controller
+class PaymentController
 {
     // Stripeの公開可能キーとシークレットキーを設定（テスト環境用）
     public function __construct()

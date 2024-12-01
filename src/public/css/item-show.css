@@ -54,6 +54,9 @@
     gap: 8%;
 }
 
+.like-form {
+    margin-left: 8%;
+}
 .like-button {
     background: none;
     border: none;
@@ -61,7 +64,6 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    margin-left: 8%;
     text-decoration: none;
 }
 

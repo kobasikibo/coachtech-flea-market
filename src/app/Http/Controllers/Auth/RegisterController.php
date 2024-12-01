@@ -2,12 +2,11 @@
 
 namespace App\Http\Controllers\Auth;
 
-use App\Http\Controllers\Controller;
 use App\Actions\Fortify\CreateNewUser;
 use App\Http\Requests\RegisterRequest;
 use Illuminate\Support\Facades\Auth;
 
-class RegisterController extends Controller
+class RegisterController
 {
     protected $createNewUser;
 
@@ -21,6 +20,12 @@ class RegisterController extends Controller
         $validatedData = $request->validated();
 
         $user = $this->createNewUser->create($validatedData);
+
+        if (!$user->hasVerifiedEmail()) {
+            $user->sendEmailVerificationNotification();
+
+            return redirect()->route('login')->with('message', '確認メールを送信しました。メールアドレスを確認してください。');
+        }
 
         Auth::login($user);
 

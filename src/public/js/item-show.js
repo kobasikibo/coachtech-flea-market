@@ -1,4 +1,34 @@
 document.addEventListener("DOMContentLoaded", function () {
+    const commentTextareas = document.querySelectorAll(
+        ".comment-form textarea"
+    );
+    commentTextareas.forEach((textarea) => {
+        let isComposing = false;
+
+        textarea.addEventListener("compositionstart", function () {
+            isComposing = true;
+        });
+
+        textarea.addEventListener("compositionend", function () {
+            isComposing = false;
+        });
+
+        textarea.addEventListener("keydown", function (event) {
+            if (event.key === "Enter" && !event.shiftKey && !isComposing) {
+                event.preventDefault();
+                const form = this.closest("form");
+                form.requestSubmit();
+            }
+        });
+    });
+
+    // 以下記述を未認証時に無効化することでmiddlewareでリダイレクト
+    const isAuthenticated = window.isAuthenticated;
+
+    if (!isAuthenticated) {
+        return;
+    }
+
     const csrfToken = document.querySelector('meta[name="csrf-token"]').content;
 
     const likeButtons = document.querySelectorAll(".like-button");
@@ -6,11 +36,11 @@ document.addEventListener("DOMContentLoaded", function () {
         const likesCountSpan = button.querySelector(".likes-count");
 
         button.addEventListener("click", function (event) {
-            event.preventDefault(); // デフォルトの動作を防ぐ
+            event.preventDefault();
             const itemId = this.dataset.itemId;
             const isNowLiked = this.classList.toggle("liked");
             const method = isNowLiked ? "POST" : "DELETE";
-            const url = `/items/${itemId}/like`;
+            const url = `/item/${itemId}/like`;
 
             fetch(url, {
                 method: method,
@@ -32,7 +62,7 @@ document.addEventListener("DOMContentLoaded", function () {
     const commentForms = document.querySelectorAll(".comment-form form");
     commentForms.forEach((form) => {
         form.addEventListener("submit", function (event) {
-            event.preventDefault(); // デフォルトの動作を防ぐ
+            event.preventDefault();
             const formData = new FormData(this);
             const itemId = this.getAttribute("action").split("/").pop(); // URLからアイテムIDを取得
             const commentsSection = document.querySelector(".comments-section");
@@ -51,7 +81,6 @@ document.addEventListener("DOMContentLoaded", function () {
             })
                 .then((response) => response.json())
                 .then((data) => {
-                    // 成功した場合
                     if (data.success) {
                         // コメントカウントとコメントラベルの更新
                         document.querySelector(".comments-count").textContent =
@@ -84,29 +113,5 @@ document.addEventListener("DOMContentLoaded", function () {
                 .catch((error) => console.error("Error:", error));
         });
     });
-
-    const commentTextareas = document.querySelectorAll(".comment-form textarea");
-    commentTextareas.forEach((textarea) => {
-        let isComposing = false;
-
-        // 日本語入力開始時
-        textarea.addEventListener('compositionstart', function () {
-            isComposing = true;
-        });
-
-        // 日本語入力完了時
-        textarea.addEventListener('compositionend', function () {
-            isComposing = false;
-        });
-
-        // Enterキー押下時
-        textarea.addEventListener('keydown', function (event) {
-            // 変換確定後、Enterで送信
-            if (event.key === 'Enter' && !event.shiftKey && !isComposing) {
-                event.preventDefault(); // 改行しない
-                const form = this.closest('form');
-                form.requestSubmit(); // フォーム送信
-            }
-        });
-    });
 });
+

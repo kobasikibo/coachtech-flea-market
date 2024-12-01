@@ -5,6 +5,13 @@
 <?php $__env->startSection('content'); ?>
     <h1>ログイン</h1>
 
+    <?php if(session('message')): ?>
+        <div class="error">
+            <?php echo e(session('message')); ?>
+
+        </div>
+    <?php endif; ?>
+
     <form method="POST" action="<?php echo e(route('login')); ?>" novalidate>
         <?php echo csrf_field(); ?>
 

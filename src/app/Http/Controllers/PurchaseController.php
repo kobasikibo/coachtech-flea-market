@@ -9,7 +9,7 @@ use App\Models\Purchase;
 use App\Services\StripeService;
 use Illuminate\Support\Facades\Auth;
 
-class PurchaseController extends Controller
+class PurchaseController
 {
     public function show($item_id)
     {

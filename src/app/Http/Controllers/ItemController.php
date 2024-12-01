@@ -9,7 +9,7 @@ use App\Http\Requests\SearchRequest;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
 
-class ItemController extends Controller
+class ItemController
 {
     public function index(SearchRequest $request)
     {
@@ -73,21 +73,21 @@ class ItemController extends Controller
         return redirect()->route('item.index');
     }
 
-    public function like(Item $item)
+    public function like($item_id)
     {
-        if (!Auth::check()) {
-            return response()->json(['error' => 'Unauthorized'], 401);
-        }
-
         $user = Auth::user();
+        $item = Item::findOrFail($item_id);
+
         $user->likes()->attach($item->id);
 
         return response()->json(['likes_count' => $item->likedByUsers()->count()]);
     }
 
-    public function unlike(Item $item)
+    public function unlike($item_id)
     {
         $user = Auth::user();
+        $item = Item::findOrFail($item_id);
+
         $user->likes()->detach($item->id);
 
         return response()->json(['likes_count' => $item->likedByUsers()->count()]);

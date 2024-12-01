@@ -48,8 +48,8 @@ h1 {
 
 .error {
     color: red;
-    font-size: 12px;
-    margin-top: 5px;
+    font-size: 1vw;
+    margin-top: 1%;
 }
 
 .btn-submit {

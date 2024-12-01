@@ -7,7 +7,7 @@ use App\Models\Comment;
 use App\Models\Item;
 use Illuminate\Support\Facades\Auth;
 
-class CommentController extends Controller
+class CommentController
 {
     public function store(CommentRequest $request, $item_id)
     {

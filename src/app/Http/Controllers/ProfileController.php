@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Controllers\Controller;
 use App\Models\User;
 use App\Models\Address;
 use App\Models\Item;
@@ -11,7 +10,7 @@ use App\Http\Requests\AddressRequest;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
 
-class ProfileController extends Controller
+class ProfileController
 {
     protected $user;
 

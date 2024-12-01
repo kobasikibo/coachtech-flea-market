@@ -19,22 +19,22 @@
         </div>
 
         <div class="item-icons">
-            <button class="like-button {{ $item->likedByUsers()->where('user_id', auth()->id())->exists() ? 'liked' : '' }}" data-item-id="{{ $item->id }}"
-            {{ auth()->check() ? '' : 'disabled' }}>
-                <img src="{{ asset('images/icons/like-icon.png') }}" alt="いいね" class="icon">
-                <span class="likes-count">{{ $item->likedByUsers()->count() }}</span>
-            </button>
+            <form action="{{ route('item.like', ['item_id' => $item->id]) }}" method="POST" class="like-form">
+                @csrf
+                <button type="submit" class="like-button {{ $item->likedByUsers()->where('user_id', auth()->id())->exists() ? 'liked' : '' }}" data-item-id="{{ $item->id }}">
+                    <img src="{{ asset('images/icons/like-icon.png') }}" alt="いいね" class="icon">
+                    <span class="likes-count">{{ $item->likedByUsers()->count() }}</span>
+                </button>
+            </form>
             <div class="comment-icon">
                 <img src="{{ asset('images/icons/comment-icon.png') }}" alt="コメント" class="icon">
                 <span class="comments-count">{{ $item->comments()->count() }}</span>
             </div>
         </div>
 
-        @if (Auth::check())
-            <div class="purchase-button-container">
-                <a href="{{ route('purchase.show', ['item_id' => $item->id]) }}" class="submit-button">購入手続きへ</a>
-            </div>
-        @endif
+        <div class="purchase-button-container">
+            <a href="{{ route('purchase.show', ['item_id' => $item->id]) }}" class="submit-button">購入手続きへ</a>
+        </div>
 
         <h2 class="item-description-label">商品説明</h2>
         <p class="item-description">{{ $item->description }}</p>
@@ -74,24 +74,24 @@
         @endforeach
         </div>
 
-        <!-- コメント投稿フォーム -->
-        @if (Auth::check())
-            <div class="comment-form">
-                <form action="{{ route('comments.store', ['item_id' => $item->id]) }}" method="POST">
-                    @csrf
-                    <label for="comment-content" class="comment-form-label">商品へのコメント</label>
-                    <textarea name="content" rows="3" required maxlength="255">{{ old('content') }}</textarea>
-                    @error('content')
-                        <p class="error-message">{{ $message }}</p>
-                    @enderror
-                    <button type="submit" class="submit-button">コメントを送信する</button>
-                </form>
-            </div>
-        @endif
+        <div class="comment-form">
+            <form action="{{ route('comments.store', ['item_id' => $item->id]) }}" method="POST">
+                @csrf
+                <label for="comment-content" class="comment-form-label">商品へのコメント</label>
+                <textarea name="content" rows="3" required maxlength="255">{{ old('content') }}</textarea>
+                @error('content')
+                    <p class="error-message">{{ $message }}</p>
+                @enderror
+                <button type="submit" class="submit-button">コメントを送信する</button>
+            </form>
+        </div>
     </div>
 </div>
 @endsection
 
 @section('scripts')
+    <script>
+        window.isAuthenticated = @json(auth()->check());
+    </script>
     <script src="{{ asset('js/item-show.js') }}"></script>
 @endsection
