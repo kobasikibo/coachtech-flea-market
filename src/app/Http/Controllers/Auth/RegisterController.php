@@ -17,18 +17,10 @@ class RegisterController
 
     public function register(RegisterRequest $request)
     {
-        $validatedData = $request->validated();
+        $user = $this->createNewUser->create($request->validated());
 
-        $user = $this->createNewUser->create($validatedData);
+        $user->sendEmailVerificationNotification();
 
-        if (!$user->hasVerifiedEmail()) {
-            $user->sendEmailVerificationNotification();
-
-            return redirect()->route('login')->with('message', '確認メールを送信しました。メールアドレスを確認してください。');
-        }
-
-        Auth::login($user);
-
-        return redirect()->route('profile.edit')->with('user', $user);
+        return redirect()->route('login')->with('message', '確認メールを送信しました。メールアドレスを確認してください。');
     }
 }

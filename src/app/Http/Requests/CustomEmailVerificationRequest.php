@@ -14,23 +14,19 @@ class CustomEmailVerificationRequest extends FormRequest
         $userId = $this->route('id');
 
         if (!$userId) {
-            \Log::error('Route parameter "id" is missing');
             return false;
         }
 
         $user = User::find($userId);
         if (!$user) {
-            \Log::error('User not found for ID: ' . $userId);
             return false;
         }
 
         if (!hash_equals(sha1($user->getEmailForVerification()), (string) $this->route('hash'))) {
-            \Log::error('Hash mismatch for user ID: ' . $userId);
             return false;
         }
 
         if (!$this->hasValidSignature()) {
-            \Log::error('Invalid signature for URL: ' . $this->fullUrl());
             return false;
         }
 

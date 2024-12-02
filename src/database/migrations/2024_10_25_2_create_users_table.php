@@ -16,6 +16,7 @@ return new class extends Migration
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password')->notNullable();
             $table->string('profile_image')->nullable();
+            $table->boolean('is_first_login')->default(true);
             $table->rememberToken();
             $table->timestamps();
         });

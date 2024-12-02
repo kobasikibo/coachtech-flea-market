@@ -12,10 +12,6 @@ use App\Http\Controllers\PurchaseController;
 Route::post('/register', [RegisterController::class, 'register'])->name('auth.register');
 Route::post('/login', [LoginController::class, 'login'])->name('auth.login');
 
-Route::get('/email/verify', function () {
-    return view('auth.verify-email');
-})->name('verification.notice');
-
 Route::post('/email/verification-notification', function (Request $request) {
     $request->user()->sendEmailVerificationNotification();
     return back();

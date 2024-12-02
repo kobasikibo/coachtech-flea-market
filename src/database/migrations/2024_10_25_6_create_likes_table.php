@@ -19,11 +19,6 @@ return new class extends Migration
 
     public function down(): void
     {
-        Schema::table('likes', function (Blueprint $table) {
-            $table->dropForeign(['likes_item_id_foreign']);
-            $table->dropForeign(['likes_user_id_foreign']);
-        });
-
         Schema::dropIfExists('likes');
     }
 };

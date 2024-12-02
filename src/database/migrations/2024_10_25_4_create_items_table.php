@@ -23,18 +23,6 @@ return new class extends Migration
 
     public function down(): void
     {
-        Schema::table('likes', function (Blueprint $table) {
-            $table->dropForeign(['item_id']);
-        });
-
-        Schema::table('comments', function (Blueprint $table) {
-            $table->dropForeign(['item_id']);
-        });
-
-        Schema::table('purchases', function (Blueprint $table) {
-            $table->dropForeign(['item_id']);
-        });
-
         Schema::dropIfExists('items');
     }
 };
