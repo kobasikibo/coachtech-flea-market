@@ -7,7 +7,7 @@
 .image-container {
     margin: 0 6% 0 18%;
     width: 10vw;
-    height: auto;
+    height: 10vw;
     border-radius: 50%;
     background-color: rgba(217, 217, 217, 1);
     overflow: hidden;

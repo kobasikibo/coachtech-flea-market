@@ -203,13 +203,13 @@
 }
 
 .user-image-container {
-    width: 12%;
-    height: auto;
+    width: 5vw;
+    height: 5vw;
     border-radius: 50%;
     background-color: rgba(217, 217, 217, 1);
     overflow: hidden;
     margin-right: 1vw;
-    margin-bottom: 1vw;
+    margin-bottom: 2vw;
 }
 
 .user-image {
@@ -221,6 +221,7 @@
 .user-name {
     font-size: 1.9vw;
     font-weight: 700;
+    margin-bottom: 2vw;
 }
 
 .comment-content {

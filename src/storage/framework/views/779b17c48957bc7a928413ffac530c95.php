@@ -61,7 +61,9 @@
             <div class="comment">
                 <div class="user-info">
                     <div class="user-image-container">
-                        <img src="<?php echo e(asset('storage/' . $comment->user->profile_image)); ?>" class="user-image">
+                        <?php if($comment->user->profile_image): ?>
+                            <img src="<?php echo e(asset('storage/' . $comment->user->profile_image)); ?>" class="user-image">
+                        <?php endif; ?>
                     </div>
                     <span class="user-name"><?php echo e($comment->user->name); ?></span>
                 </div>

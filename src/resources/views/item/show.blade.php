@@ -63,7 +63,9 @@
             <div class="comment">
                 <div class="user-info">
                     <div class="user-image-container">
-                        <img src="{{ asset('storage/' . $comment->user->profile_image) }}" class="user-image">
+                        @if($comment->user->profile_image)
+                            <img src="{{ asset('storage/' . $comment->user->profile_image) }}" class="user-image">
+                        @endif
                     </div>
                     <span class="user-name">{{ $comment->user->name }}</span>
                 </div>

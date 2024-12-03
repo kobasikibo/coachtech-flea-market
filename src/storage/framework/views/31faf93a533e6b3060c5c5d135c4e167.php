@@ -14,7 +14,7 @@
             <div class="item-info">
                 <div class="item-name"><?php echo e($item->name); ?></div>
                 <div class="price">
-                    <span class="value">¥ <?php echo e(number_format($item->price)); ?></span>
+                    <span class="value"><span class="currency-symbol">¥ </span><?php echo e(number_format($item->price)); ?></span>
                 </div>
             </div>
         </div>
@@ -35,7 +35,7 @@
             </div>
             <div class="address-info">
                 <p>〒 <?php echo e($tempZipCode ?? $address['zip_code'] ?? '未登録'); ?></p>
-                <p><?php echo e($tempAddress ?? $address['address'] ?? '未登録'); ?></p>
+                <p><?php echo e($tempAddress ?? $address['address'] ?? '未登録'); ?><p>
                 <p><?php echo e($tempBuilding ?? $address['building'] ?? '未登録'); ?></p>
             </div>
         </div>
@@ -45,7 +45,7 @@
         <div class="order-summary">
             <div class="summary-item">
                 <p class="summary-label">商品代金</p>
-                <p class="summary-value">¥ <?php echo e(number_format($item->price)); ?></p>
+                <p class="summary-value"><span class="currency-symbol">¥ </span><?php echo e(number_format($item->price)); ?></p>
             </div>
             <div class="summary-item">
                 <p class="summary-label">支払い方法</p>
