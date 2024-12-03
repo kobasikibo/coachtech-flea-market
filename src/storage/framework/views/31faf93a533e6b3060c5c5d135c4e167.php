@@ -22,7 +22,7 @@
         <div class="form-group">
             <label for="payment_method" class="payment-label">支払い方法</label>
             <select name="payment_method" id="payment_method" required>
-                <option value="" disabled selected hidden>選択してください</option>
+                <option value="convenience" disabled selected hidden>選択してください</option>
                 <option value="convenience" <?php echo e(old('payment_method') === 'convenience' ? 'selected' : ''); ?>>コンビニ支払い</option>
                 <option value="card" <?php echo e(old('payment_method') === 'card' ? 'selected' : ''); ?>>カード支払い</option>
             </select>
@@ -49,7 +49,7 @@
             </div>
             <div class="summary-item">
                 <p class="summary-label">支払い方法</p>
-                <p class="summary-value"><span id="payment-method-display">未選択</span></p>
+                <p class="summary-value"><span id="payment-method-display"></span></p>
             </div>
         </div>
         <div id="card-element" class="card-element"></div>

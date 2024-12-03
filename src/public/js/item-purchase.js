@@ -12,9 +12,13 @@ document.addEventListener("DOMContentLoaded", () => {
 
     // 支払い方法表示を更新
     const updatePaymentDisplay = () => {
-        const selectedText = paymentSelect.selectedOptions[0]?.text || "未選択";
-        paymentDisplay.textContent =
-            selectedText === "選択してください" ? "未選択" : selectedText;
+        const selectedValue = paymentSelect.value;
+        const summaryText =
+            selectedValue === "convenience" ? "コンビニ支払い" :
+            selectedValue === "card" ? "カード支払い" :
+            "";
+
+        paymentDisplay.textContent = summaryText;
     };
 
     // 支払い方法が変更されたとき
