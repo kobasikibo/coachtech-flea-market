@@ -20,8 +20,20 @@
         </div>
 
         <div class="form-group">
-            <label for="payment_method" class="payment-label">支払い方法</label>
-            <select name="payment_method" id="payment_method" required>
+            <div class="payment-label-container">
+                <div class="payment-label">支払い方法</div>
+                <?php $__errorArgs = ['payment_method'];
+$__bag = $errors->getBag($__errorArgs[1] ?? 'default');
+if ($__bag->has($__errorArgs[0])) :
+if (isset($message)) { $__messageOriginal = $message; }
+$message = $__bag->first($__errorArgs[0]); ?>
+                    <div class="error"><?php echo e($message); ?></div>
+                <?php unset($message);
+if (isset($__messageOriginal)) { $message = $__messageOriginal; }
+endif;
+unset($__errorArgs, $__bag); ?>
+            </div>
+            <select name="payment_method" required>
                 <option value="convenience" disabled selected hidden>選択してください</option>
                 <option value="convenience" <?php echo e(old('payment_method') === 'convenience' ? 'selected' : ''); ?>>コンビニ支払い</option>
                 <option value="card" <?php echo e(old('payment_method') === 'card' ? 'selected' : ''); ?>>カード支払い</option>
@@ -29,14 +41,26 @@
         </div>
 
         <div class="form-group">
-            <div class="address-label">
-                <div class="address">配送先</div>
+            <div class="label-container">
+                <div class="address-label">配送先</div>
+                <?php $__errorArgs = ['address'];
+$__bag = $errors->getBag($__errorArgs[1] ?? 'default');
+if ($__bag->has($__errorArgs[0])) :
+if (isset($message)) { $__messageOriginal = $message; }
+$message = $__bag->first($__errorArgs[0]); ?>
+                    <div class="error"><?php echo e($message); ?></div>
+                <?php unset($message);
+if (isset($__messageOriginal)) { $message = $__messageOriginal; }
+endif;
+unset($__errorArgs, $__bag); ?>
                 <a href="<?php echo e(route('purchase.address.edit', ['item_id' => $item->id])); ?>" class="btn-change-address">変更する</a>
             </div>
             <div class="address-info">
-                <p>〒 <?php echo e($tempZipCode ?? $address['zip_code'] ?? '未登録'); ?></p>
-                <p><?php echo e($tempAddress ?? $address['address'] ?? '未登録'); ?><p>
-                <p><?php echo e($tempBuilding ?? $address['building'] ?? '未登録'); ?></p>
+                <?php if(!empty($address['zip_code'])): ?>
+                    <p>〒 <?php echo e($address['zip_code']); ?></p>
+                <?php endif; ?>
+                <p><?php echo e($shippingAddress ?? $address['address'] ?? ''); ?><p>
+                <p><?php echo e($shippingBuilding ?? $address['building'] ?? ''); ?></p>
             </div>
         </div>
     </div>
@@ -52,9 +76,6 @@
                 <p class="summary-value"><span id="payment-method-display"></span></p>
             </div>
         </div>
-        <div id="card-element" class="card-element"></div>
-        <div id="card-errors" class="card-errors" role="alert"></div>
-        <input type="hidden" name="stripeToken" id="stripe-token">
         <button type="submit" class="btn-purchase">購入する</button>
     </div>
 </form>

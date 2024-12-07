@@ -13,11 +13,10 @@ return new class extends Migration
             $table->id();
             $table->foreignId('user_id')->constrained('users')->onDelete('cascade');
             $table->foreignId('item_id')->constrained('items');
-            $table->foreignId('address_id')->nullable()->constrained('addresses');
             $table->string('payment_method')->notNullable();
-            $table->string('temp_zip_code')->nullable();
-            $table->string('temp_address')->nullable();
-            $table->string('temp_building')->nullable();
+            $table->string('shipping_zip_code')->notNullable();
+            $table->string('shipping_address')->notNullable();
+            $table->string('shipping_building')->notNullable();
             $table->timestamps();
         });
     }

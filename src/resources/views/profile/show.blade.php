@@ -19,7 +19,7 @@
 
         <div class="tab-container">
             <a href="{{ url('/mypage?tab=sell') }}" class="tab-link {{ $tab === 'sell' ? 'active' : '' }}">出品した商品</a>
-            <a href="{{ url('/mypage?tab=buy') }}" class="tab-link {{ $tab === 'buy' ? 'active' : 'disabled' }}">購入した商品（未実装）</a>
+            <a href="{{ url('/mypage?tab=buy') }}" class="tab-link {{ $tab === 'buy' ? 'active' : '' }}">購入した商品</a>
         </div>
 
         <div class="item-list">
@@ -36,5 +36,5 @@
 @endsection
 
 @section('scripts')
-    <script src="{{ asset('js/profile.js') }}" defer></script>
+    <script src="{{ asset('js/profile-show.js') }}" defer></script>
 @endsection

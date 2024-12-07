@@ -4,9 +4,8 @@
     margin: 5%;
 }
 
-/* 左側: 商品詳細と配送先情報 */
 .left-content {
-    width: 62%;
+    width: 61%;
     display: flex;
     flex-direction: column;
 }
@@ -57,10 +56,23 @@
     flex-direction: column;
 }
 
+.error {
+    color: red;
+    font-size: 1vw;
+    font-weight: 400;
+    margin-right: 10vw;
+}
+
+.payment-label-container {
+    display: flex;
+    align-items: center;
+}
+
 .payment-label {
     margin-left: 3%;
     font-size: 1.25vw;
     font-weight: 700;
+    margin-right: 4vw;
 }
 
 select[name="payment_method"] {
@@ -74,15 +86,14 @@ select[name="payment_method"] {
     border-radius: 0.3vw;
 }
 
-.address-label {
-    margin-left: 3%;
+.label-container {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    font-weight: bold;
 }
 
-.address {
+.address-label {
+    margin-left: 3%;
     font-size: 1.25vw;
     font-weight: 700;
 }
@@ -106,10 +117,10 @@ select[name="payment_method"] {
 }
 
 .right-content {
-    width: 30%;
+    width: 32%;
     display: flex;
     flex-direction: column;
-    gap: 3%;
+    gap: 8%;
 }
 
 .order-summary {

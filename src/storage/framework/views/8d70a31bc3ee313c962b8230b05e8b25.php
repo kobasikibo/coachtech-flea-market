@@ -17,7 +17,7 @@
 
         <div class="tab-container">
             <a href="<?php echo e(url('/mypage?tab=sell')); ?>" class="tab-link <?php echo e($tab === 'sell' ? 'active' : ''); ?>">出品した商品</a>
-            <a href="<?php echo e(url('/mypage?tab=buy')); ?>" class="tab-link <?php echo e($tab === 'buy' ? 'active' : 'disabled'); ?>">購入した商品（未実装）</a>
+            <a href="<?php echo e(url('/mypage?tab=buy')); ?>" class="tab-link <?php echo e($tab === 'buy' ? 'active' : ''); ?>">購入した商品</a>
         </div>
 
         <div class="item-list">
@@ -34,6 +34,6 @@
 <?php $__env->stopSection(); ?>
 
 <?php $__env->startSection('scripts'); ?>
-    <script src="<?php echo e(asset('js/profile.js')); ?>" defer></script>
+    <script src="<?php echo e(asset('js/profile-show.js')); ?>" defer></script>
 <?php $__env->stopSection(); ?>
 <?php echo $__env->make('layouts.app', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH /var/www/resources/views/profile/show.blade.php ENDPATH**/ ?>

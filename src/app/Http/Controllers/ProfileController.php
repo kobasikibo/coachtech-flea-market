@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\User;
 use App\Models\Address;
 use App\Models\Item;
+use App\Models\Purchase;
 use App\Http\Requests\ProfileRequest;
 use App\Http\Requests\AddressRequest;
 use Illuminate\Support\Facades\Auth;
@@ -14,7 +15,6 @@ class ProfileController
 {
     protected $user;
 
-    // コンストラクタで認証ユーザーを取得
     public function __construct()
     {
         $this->user = Auth::user();
@@ -28,12 +28,7 @@ class ProfileController
         if ($tab === 'sell') {
             $items = Item::where('user_id', $user->id)->get();
         } elseif ($tab === 'buy') {
-            // 購入した商品を取得（未実装なので空のコレクションを返す）
-            // 購入した商品を管理するロジックを後で追加することができます。
-            $items = collect(); // 現在は未実装のため、空のコレクション
-        } else {
-            // 購入した商品を実装したら要編集！
-            $items = collect();
+            $items = Purchase::with('item')->where('user_id', $user->id)->get()->pluck('item');
         }
 
         return view('profile.show', compact('user', 'items', 'tab'));

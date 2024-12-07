@@ -5,11 +5,26 @@ namespace App\Services;
 use Stripe\Stripe;
 use Stripe\Charge;
 
+Stripe::setApiKey(env('STRIPE_SECRET'));
+
+try {
+    $charge = Charge::create([
+        'amount' => 5000, // テスト金額 (5000 = ¥50)
+        'currency' => 'jpy',
+        'source' => 'tok_visa', // テストトークン
+        'description' => 'Test charge',
+    ]);
+    dd($charge);
+} catch (\Exception $e) {
+    dd($e->getMessage());
+}
+
 class StripeService
 {
     public function __construct()
     {
-        Stripe::setApiKey(env('STRIPE_SECRET')); // Stripeのシークレットキー
+        Stripe::setApiKey(env('STRIPE_SECRET'));
+        \Log::info('Using Stripe API key: ' . env('STRIPE_SECRET'));
     }
 
     public function charge($amount, $token)

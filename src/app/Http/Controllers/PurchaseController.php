@@ -11,56 +11,44 @@ use Illuminate\Support\Facades\Auth;
 
 class PurchaseController
 {
+    private function getAddressFromSessionOrUser($user)
+    {
+        return [
+            'zip_code' => session('shipping_zip_code', $user->address->zip_code ?? ''),
+            'address' => session('shipping_address', $user->address->address ?? ''),
+            'building' => session('shipping_building', $user->address->building ?? ''),
+        ];
+    }
+
     public function show($item_id)
     {
         $item = Item::findOrFail($item_id);
         $user = Auth::user();
-
-        if ($user->address) {
-            $address = [
-                'zip_code' => session('temp_zip_code', $user->address->zip_code),
-                'address' => session('temp_address', $user->address->address),
-                'building' => session('temp_building', $user->address->building),
-            ];
-        } else {
-            // 住所が登録されていない場合のデフォルト値
-            $address = [
-                'zip_code' => session('temp_zip_code', ''),
-                'address' => session('temp_address', '住所'),
-                'building' => session('temp_building', '建物名'),
-            ];
-        }
+        $address = $this->getAddressFromSessionOrUser($user);
 
         return view('item.purchase', compact('item', 'address'));
     }
 
-    public function store(PurchaseRequest $request, StripeService $stripeService)
+    public function store(PurchaseRequest $request)
     {
         $validated = $request->validated();
         $item = Item::findOrFail($request->item_id);
         $user = Auth::user();
 
-        $tempZipCode = session('temp_zip_code', $user->address->zip_code);
-        $tempAddress = session('temp_address', $user->address->address);
-        $tempBuilding = session('temp_building', $user->address->building);
+        $shippingZipCode = session('shipping_zip_code', $user->address->zip_code ?? '');
+        $shippingAddress = session('shipping_address', $user->address->address ?? '');
+        $shippingBuilding = session('shipping_building', $user->address->building ?? '');
 
-        // 購入処理
         Purchase::create([
             'user_id' => $user->id,
             'item_id' => $item->id,
             'payment_method' => $validated['payment_method'],
-            'address_id' => $user->address->id,
-            'temp_zip_code' => $tempZipCode,
-            'temp_address' => $tempAddress,
-            'temp_building' => $tempBuilding,
+            'shipping_zip_code' => $shippingZipCode,
+            'shipping_address' => $shippingAddress,
+            'shipping_building' => $shippingBuilding,
         ]);
 
-        // 支払い方法がカードの場合、Stripeで支払い処理
-        if ($validated['payment_method'] === 'card') {
-            $stripeService->charge($item->price, $request->stripeToken);
-        }
-
-        session()->forget(['temp_zip_code', 'temp_address', 'temp_building']);
+        session()->forget(['shipping_zip_code', 'shipping_address', 'shipping_building']);
 
         return redirect('/');
     }
@@ -69,20 +57,7 @@ class PurchaseController
     {
         $item = Item::findOrFail($item_id);
         $user = Auth::user();
-
-        if ($user->address) {
-            $defaultAddress = [
-                'zip_code' => session('temp_zip_code', $user->address->zip_code),
-                'address' => session('temp_address', $user->address->address),
-                'building' => session('temp_building', $user->address->building),
-            ];
-        } else {
-            $defaultAddress = [
-                'zip_code' => session('temp_zip_code', ''),
-                'address' => session('temp_address', ''),
-                'building' => session('temp_building', ''),
-            ];
-        }
+        $defaultAddress = $this->getAddressFromSessionOrUser($user);
 
         return view('address.edit', compact('item', 'defaultAddress'));
     }
@@ -91,14 +66,12 @@ class PurchaseController
     {
         $validated = $request->validated();
 
-        // セッションに新しい住所情報を保存
         session([
-            'temp_zip_code' => $validated['zip_code'],
-            'temp_address' => $validated['address'],
-            'temp_building' => $validated['building'],
+            'shipping_zip_code' => $validated['zip_code'],
+            'shipping_address' => $validated['address'],
+            'shipping_building' => $validated['building'],
         ]);
 
-        // 住所変更後に購入画面にリダイレクト
         return redirect()->route('purchase.show', ['item_id' => $item_id])
                         ->with('success', '配送先住所を変更しました。');
     }
