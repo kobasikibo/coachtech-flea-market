@@ -11,12 +11,16 @@
 
     <div class="item-list">
         <?php $__currentLoopData = $items; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $item): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-            <div class="item">
-                <a href="<?php echo e(route('item.show', ['item_id' => $item->id])); ?>">
-                    <img src="<?php echo e(asset('storage/' . $item->image_path)); ?>" alt="<?php echo e($item->name); ?>">
-                </a>
+            <div class="item <?php if($item->is_purchased): ?> sold <?php endif; ?>">
+                    <div class="item-img-container">
+                        <a href="<?php echo e(route('item.show', ['item_id' => $item->id])); ?>">
+                            <img src="<?php echo e(asset('storage/' . $item->image_path)); ?>" alt="<?php echo e($item->name); ?>">
+                        </a>
+                        <?php if($item->is_purchased): ?>
+                            <div class="sold-label">Sold</div>
+                        <?php endif; ?>
+                    </div>
                 <div class="item-name"><?php echo e($item->name); ?></div>
-                
             </div>
         <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
     </div>

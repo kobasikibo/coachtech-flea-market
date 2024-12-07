@@ -17,6 +17,7 @@ return new class extends Migration
             $table->decimal('price', 10, 2)->notNullable();
             $table->text('description')->notNullable();
             $table->string('image_path')->notNullable();
+            $table->boolean('is_purchased')->default(false);
             $table->timestamps();
         });
     }

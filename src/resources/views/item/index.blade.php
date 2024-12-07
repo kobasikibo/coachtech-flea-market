@@ -13,12 +13,16 @@
 
     <div class="item-list">
         @foreach($items as $item)
-            <div class="item">
-                <a href="{{ route('item.show', ['item_id' => $item->id]) }}">
-                    <img src="{{ asset('storage/' . $item->image_path) }}" alt="{{ $item->name }}">
-                </a>
+            <div class="item @if($item->is_purchased) sold @endif">
+                    <div class="item-img-container">
+                        <a href="{{ route('item.show', ['item_id' => $item->id]) }}">
+                            <img src="{{ asset('storage/' . $item->image_path) }}" alt="{{ $item->name }}">
+                        </a>
+                        @if($item->is_purchased)
+                            <div class="sold-label">Sold</div>
+                        @endif
+                    </div>
                 <div class="item-name">{{ $item->name }}</div>
-                {{-- 購入済み表示は後回し --}}
             </div>
         @endforeach
     </div>

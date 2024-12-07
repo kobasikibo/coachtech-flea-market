@@ -22,11 +22,6 @@
     color: rgba(255, 0, 0, 1);
 }
 
-.tab-link.disabled {
-    color: rgba(95, 95, 95, 1);
-    cursor: not-allowed;
-}
-
 .item-list {
     display: flex;
     align-items: center;
@@ -36,10 +31,13 @@
 
 .item {
     width: 20%;
-    height: auto;
     margin-left: 4%;
     margin-top: 4%;
     text-align: left;
+}
+
+.item-img-container {
+    position: relative;
 }
 
 .item img {
@@ -53,6 +51,26 @@
     transform: scale(1.05);
     filter: brightness(1.1);
     opacity: 0.9;
+}
+
+.sold-label {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+    color: white;
+    font-size: 3vw;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700;
+    z-index: 10;
+}
+
+.item.sold .sold-label {
+    display: flex;
 }
 
 .item-name {

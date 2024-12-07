@@ -48,6 +48,9 @@ class PurchaseController
             'shipping_building' => $shippingBuilding,
         ]);
 
+        $item->is_purchased = true;
+        $item->save();
+
         session()->forget(['shipping_zip_code', 'shipping_address', 'shipping_building']);
 
         return redirect('/');
