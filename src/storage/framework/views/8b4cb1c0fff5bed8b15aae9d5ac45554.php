@@ -1,5 +1,6 @@
 <?php $__env->startSection('css'); ?>
     <link rel="stylesheet" href="<?php echo e(asset('css/form-styles.css')); ?>" />
+    <link rel="stylesheet" href="<?php echo e(asset('css/address-edit.css')); ?>" />
 <?php $__env->stopSection(); ?>
 
 <?php $__env->startSection('content'); ?>
@@ -9,7 +10,7 @@
         <?php echo csrf_field(); ?>
 
         <div class="form-group">
-            <label for="zip_code">郵便番号</label>
+            <div class="zip-code-label">郵便番号</div>
             <input type="text" name="zip_code" class="zip-code" value="<?php echo e(old('zip_code')); ?>" placeholder="<?php echo e($defaultAddress['zip_code']); ?>" required>
             <?php $__errorArgs = ['zip_code'];
 $__bag = $errors->getBag($__errorArgs[1] ?? 'default');
@@ -22,7 +23,7 @@ unset($__errorArgs, $__bag); ?>
         </div>
 
         <div class="form-group">
-            <label for="address">住所</label>
+            <div class="address-label">住所</div>
             <input type="text" name="address" class="address" value="<?php echo e(old('address')); ?>" placeholder="<?php echo e($defaultAddress['address']); ?>" required>
             <?php $__errorArgs = ['address'];
 $__bag = $errors->getBag($__errorArgs[1] ?? 'default');
@@ -35,7 +36,7 @@ unset($__errorArgs, $__bag); ?>
         </div>
 
         <div class="form-group">
-            <label for="building">建物名</label>
+            <div class="building-label">建物名</div>
             <input type="text" name="building" class="building" value="<?php echo e(old('building')); ?>" placeholder="<?php echo e($defaultAddress['building']); ?>" required>
             <?php $__errorArgs = ['building'];
 $__bag = $errors->getBag($__errorArgs[1] ?? 'default');

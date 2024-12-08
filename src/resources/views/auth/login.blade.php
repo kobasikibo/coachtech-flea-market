@@ -17,7 +17,7 @@
         @csrf
 
         <div class="form-group">
-            <label for="email">メールアドレス</label>
+            <div class="email-label">メールアドレス</div>
             <input type="email" name="email" class="form-input" value="{{ old('email') }}" required>
 
             @error('email')
@@ -26,7 +26,7 @@
         </div>
 
         <div class="form-group">
-            <label for="password">パスワード</label>
+            <div class="password-label">パスワード</div>
             <input type="password" name="password" class="form-input" required>
 
             @error('password')

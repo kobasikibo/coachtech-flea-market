@@ -16,7 +16,7 @@
         <?php echo csrf_field(); ?>
 
         <div class="form-group">
-            <label for="email">メールアドレス</label>
+            <div class="email-label">メールアドレス</=>
             <input type="email" name="email" class="form-input" value="<?php echo e(old('email')); ?>" required>
 
             <?php $__errorArgs = ['email'];
@@ -32,7 +32,7 @@ unset($__errorArgs, $__bag); ?>
         </div>
 
         <div class="form-group">
-            <label for="password">パスワード</label>
+            <div class="password-label">パスワード</=>
             <input type="password" name="password" class="form-input" required>
 
             <?php $__errorArgs = ['password'];

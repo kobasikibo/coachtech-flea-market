@@ -2,6 +2,7 @@
 
 @section('css')
     <link rel="stylesheet" href="{{ asset('css/form-styles.css') }}" />
+    <link rel="stylesheet" href="{{ asset('css/register.css') }}" />
 @endsection
 
 @section('content')
@@ -11,7 +12,7 @@
         @csrf
 
         <div class="form-group">
-            <label for="name">ユーザー名</label>
+            <div class="name-label">ユーザー名</div>
             <input type="text" name="name" class="form-input" value="{{ old('name') }}" required>
 
             @error('name')
@@ -20,7 +21,7 @@
         </div>
 
         <div class="form-group">
-            <label for="email">メールアドレス</label>
+            <div class="email-label">メールアドレス</div>
             <input type="email" name="email" class="form-input" value="{{ old('email') }}" required>
 
             @error('email')
@@ -29,7 +30,7 @@
         </div>
 
         <div class="form-group">
-            <label for="password">パスワード</label>
+            <div class="password-label">パスワード</div>
             <input type="password" name="password" class="form-input" required>
 
             @error('password')
@@ -38,7 +39,7 @@
         </div>
 
         <div class="form-group">
-            <label for="password_confirmation">確認用パスワード</label>
+            <div class="password-confirmation-label">確認用パスワード</div>
             <input type="password" name="password_confirmation" class="form-input" required>
 
             @error('password_confirmation')

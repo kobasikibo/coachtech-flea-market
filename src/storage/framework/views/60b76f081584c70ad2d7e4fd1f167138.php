@@ -1,5 +1,6 @@
 <?php $__env->startSection('css'); ?>
     <link rel="stylesheet" href="<?php echo e(asset('css/form-styles.css')); ?>" />
+    <link rel="stylesheet" href="<?php echo e(asset('css/register.css')); ?>" />
 <?php $__env->stopSection(); ?>
 
 <?php $__env->startSection('content'); ?>
@@ -9,7 +10,7 @@
         <?php echo csrf_field(); ?>
 
         <div class="form-group">
-            <label for="name">ユーザー名</label>
+            <div class="name-label">ユーザー名</div>
             <input type="text" name="name" class="form-input" value="<?php echo e(old('name')); ?>" required>
 
             <?php $__errorArgs = ['name'];
@@ -25,7 +26,7 @@ unset($__errorArgs, $__bag); ?>
         </div>
 
         <div class="form-group">
-            <label for="email">メールアドレス</label>
+            <div class="email-label">メールアドレス</div>
             <input type="email" name="email" class="form-input" value="<?php echo e(old('email')); ?>" required>
 
             <?php $__errorArgs = ['email'];
@@ -41,7 +42,7 @@ unset($__errorArgs, $__bag); ?>
         </div>
 
         <div class="form-group">
-            <label for="password">パスワード</label>
+            <div class="password-label">パスワード</=>
             <input type="password" name="password" class="form-input" required>
 
             <?php $__errorArgs = ['password'];
@@ -57,7 +58,7 @@ unset($__errorArgs, $__bag); ?>
         </div>
 
         <div class="form-group">
-            <label for="password_confirmation">確認用パスワード</label>
+            <div class="password-confirmation-label">確認用パスワード</=>
             <input type="password" name="password_confirmation" class="form-input" required>
 
             <?php $__errorArgs = ['password_confirmation'];

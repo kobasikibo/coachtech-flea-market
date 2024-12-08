@@ -34,7 +34,7 @@ unset($__errorArgs, $__bag); ?>
         </div>
 
         <div class="form-group">
-            <label for="name">ユーザー名</label>
+            <div class="name-label">ユーザー名</div>
             <input type="text" name="name" class="form-input" value="<?php echo e(old('name', $user->name)); ?>" required>
 
             <?php $__errorArgs = ['name'];
@@ -50,7 +50,7 @@ unset($__errorArgs, $__bag); ?>
         </div>
 
         <div class="form-group">
-            <label for="zip_code">郵便番号</label>
+            <div class="zip-code-label">郵便番号</div>
             <input type="text" name="zip_code" class="form-input" value="<?php echo e(old('zip_code', $address->zip_code ?? '')); ?>" required>
 
             <?php $__errorArgs = ['zip_code'];
@@ -66,7 +66,7 @@ unset($__errorArgs, $__bag); ?>
         </div>
 
         <div class="form-group">
-            <label for="address">住所</label>
+            <div class="address-label">住所</div>
             <input type="text" name="address" class="form-input" value="<?php echo e(old('address', $address->address ?? '')); ?>" required>
 
             <?php $__errorArgs = ['address'];
@@ -82,7 +82,7 @@ unset($__errorArgs, $__bag); ?>
         </div>
 
         <div class="form-group">
-            <label for="building">建物名</label>
+            <div class="building-label">建物名</div>
             <input type="text" name="building" class="form-input" value="<?php echo e(old('building', $address->building ?? '')); ?>" required>
 
             <?php $__errorArgs = ['building'];
