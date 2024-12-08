@@ -74,12 +74,4 @@ class PaymentController
         // 購入完了ページへリダイレクト
         return view('payment.success', compact('purchase'));
     }
-
-    // 支払いキャンセル後の処理
-    public function cancel($purchase_id)
-    {
-        $purchase = Purchase::findOrFail($purchase_id);
-        // キャンセルページへリダイレクト
-        return view('payment.cancel', compact('purchase'));
-    }
 }
