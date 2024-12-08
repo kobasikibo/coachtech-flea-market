@@ -17,7 +17,6 @@ return new class extends Migration
             $table->string('password')->notNullable();
             $table->string('profile_image')->nullable();
             $table->boolean('is_first_login')->default(true);
-            $table->rememberToken();
             $table->timestamps();
         });
     }
