@@ -22,7 +22,7 @@ class PurchaseRequest extends FormRequest
     public function messages()
     {
         return [
-            'payment_method.required' => '支払い方法を選択してください。',
+            'payment_method.required' => '支払い方法を選択してください',
         ];
     }
 
@@ -46,7 +46,7 @@ class PurchaseRequest extends FormRequest
     {
         $validator->after(function ($validator) {
             if (!$this->input('has_address_or_session')) {
-                $validator->errors()->add('address', '住所を登録するか、配送先の住所を入力してください。');
+                $validator->errors()->add('address', '住所を登録するか、配送先の住所を入力してください');
             }
         });
     }

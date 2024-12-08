@@ -17,11 +17,4 @@ class SearchRequest extends FormRequest
             'query' => 'nullable|string',
         ];
     }
-
-    public function messages()
-    {
-        return [
-            'query.string' => '検索は文字列でなければなりません。',
-        ];
-    }
 }

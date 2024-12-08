@@ -75,16 +75,16 @@
         </div>
 
         <div class="comment-form">
-            <form action="<?php echo e(route('comments.store', ['item_id' => $item->id])); ?>" method="POST">
+            <form action="<?php echo e(route('comments.store', ['item_id' => $item->id])); ?>" method="POST" novalidate>
                 <?php echo csrf_field(); ?>
                 <label for="comment-content" class="comment-form-label">商品へのコメント</label>
-                <textarea name="content" rows="3" required maxlength="255"><?php echo e(old('content')); ?></textarea>
+                <textarea name="content"><?php echo e(old('content')); ?></textarea>
                 <?php $__errorArgs = ['content'];
 $__bag = $errors->getBag($__errorArgs[1] ?? 'default');
 if ($__bag->has($__errorArgs[0])) :
 if (isset($message)) { $__messageOriginal = $message; }
 $message = $__bag->first($__errorArgs[0]); ?>
-                    <p class="error-message"><?php echo e($message); ?></p>
+                    <p class="error"><?php echo e($message); ?></p>
                 <?php unset($message);
 if (isset($__messageOriginal)) { $message = $__messageOriginal; }
 endif;

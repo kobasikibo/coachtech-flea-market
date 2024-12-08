@@ -77,12 +77,12 @@
         </div>
 
         <div class="comment-form">
-            <form action="{{ route('comments.store', ['item_id' => $item->id]) }}" method="POST">
+            <form action="{{ route('comments.store', ['item_id' => $item->id]) }}" method="POST" novalidate>
                 @csrf
                 <label for="comment-content" class="comment-form-label">商品へのコメント</label>
-                <textarea name="content" rows="3" required maxlength="255">{{ old('content') }}</textarea>
+                <textarea name="content">{{ old('content') }}</textarea>
                 @error('content')
-                    <p class="error-message">{{ $message }}</p>
+                    <p class="error">{{ $message }}</p>
                 @enderror
                 <button type="submit" class="submit-button">コメントを送信する</button>
             </form>
