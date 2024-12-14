@@ -45,7 +45,7 @@ class MyListTest extends TestCase
     /**
      * 購入済み商品は「Sold」と表示される
      */
-    public function test_sold_items_are_displayed_as_sold()
+    public function test_sold_items_are_displayed_as_sold_in_mylist()
     {
         $user = User::factory()->create([
             'name' => 'MyList',
@@ -67,7 +67,7 @@ class MyListTest extends TestCase
     /**
      * 自分が出品した商品は表示されない
      */
-    public function test_own_items_are_not_displayed()
+    public function test_own_items_are_not_displayed_in_mylist()
     {
         $user = User::factory()->create([
             'name' => 'MyList',
