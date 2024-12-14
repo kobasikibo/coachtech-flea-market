@@ -42,7 +42,7 @@ unset($__errorArgs, $__bag); ?>
         </div>
 
         <div class="form-group">
-            <div class="password-label">パスワード</=>
+            <div class="password-label">パスワード</div>
             <input type="password" name="password" class="form-input" required>
 
             <?php $__errorArgs = ['password'];
@@ -58,7 +58,7 @@ unset($__errorArgs, $__bag); ?>
         </div>
 
         <div class="form-group">
-            <div class="password-confirmation-label">確認用パスワード</=>
+            <div class="password-confirmation-label">確認用パスワード</div>
             <input type="password" name="password_confirmation" class="form-input" required>
 
             <?php $__errorArgs = ['password_confirmation'];

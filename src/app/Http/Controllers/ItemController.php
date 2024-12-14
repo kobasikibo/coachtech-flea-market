@@ -19,9 +19,11 @@ class ItemController
         if ($tab === 'mylist') {
             if (Auth::check()) {
                 // マイリスト：ユーザーが「いいね」した商品
-                $itemsQuery = Auth::user()->likes()->when($query, function ($queryBuilder) use ($query) {
-                    return $queryBuilder->where('name', 'like', '%' . $query . '%');
-                });
+                $itemsQuery = Auth::user()->likes()
+                    ->when($query, function ($queryBuilder) use ($query) {
+                        return $queryBuilder->where('name', 'like', '%' . $query . '%');
+                    })
+                    ->where('items.user_id', '!=', Auth::id()); // 自分の出品を除外
             } else {
                 // 未認証の場合、空のリストを返す
                 $itemsQuery = Item::whereRaw('0 = 1');

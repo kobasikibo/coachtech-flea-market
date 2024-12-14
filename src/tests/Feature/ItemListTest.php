@@ -37,8 +37,8 @@ class ItemListTest extends TestCase
     public function test_sold_items_are_displayed_as_sold()
     {
         $user = User::factory()->create([
-            'name' => 'テストユーザー',
-            'email' => 'item_list@example.com',
+            'name' => 'ItemList',
+            'email' => 'ItemList@example.com',
             'password' => bcrypt('password123'),
             'email_verified_at' => now(),  // テスト用にメール認証はスキップ
         ]);
@@ -55,11 +55,11 @@ class ItemListTest extends TestCase
     /**
      * 自分が出品した商品は表示されない
      */
-    public function test_items_excluded_from_my_own_list()
+    public function test_own_items_are_not_displayed()
     {
         $user = User::factory()->create([
-            'name' => 'テストユーザー',
-            'email' => 'item_list@example.com',
+            'name' => 'ItemList',
+            'email' => 'ItemList@example.com',
             'password' => bcrypt('password123'),
             'email_verified_at' => now(),  // テスト用にメール認証はスキップ
         ]);

@@ -12,7 +12,6 @@ class RegistrationTest extends TestCase
     /**
      *  名前が入力されていない場合、バリデーションメッセージが表示される
      */
-    #[Test]
     public function test_name_is_required()
     {
         $response = $this->post('/register', [
@@ -27,7 +26,6 @@ class RegistrationTest extends TestCase
     /**
      * メールアドレスが入力されていない場合、バリデーションメッセージが表示される
      */
-    #[Test]
     public function test_email_is_required()
     {
         $response = $this->post('/register', [
@@ -42,7 +40,6 @@ class RegistrationTest extends TestCase
     /**
      * パスワードが入力されていない場合、バリデーションメッセージが表示される
      */
-    #[Test]
     public function test_password_is_required()
     {
         $response = $this->post('/register', [
@@ -56,7 +53,6 @@ class RegistrationTest extends TestCase
     /**
      * パスワードが7文字以下の場合、バリデーションメッセージが表示される
      */
-    #[Test]
     public function test_password_min_length()
     {
         $response = $this->post('/register', [
@@ -72,7 +68,6 @@ class RegistrationTest extends TestCase
     /**
      * パスワードが確認用パスワードと一致しない場合、バリデーションメッセージが表示される
      */
-    #[Test]
     public function test_password_confirmation_must_match()
     {
         $response = $this->post('/register', [
@@ -88,7 +83,6 @@ class RegistrationTest extends TestCase
     /**
      * 全ての項目が入力されている場合、会員情報が登録され、ログイン画面に遷移される
      */
-    #[Test]
     public function test_registration_successful()
     {
         $response = $this->post('/register', [

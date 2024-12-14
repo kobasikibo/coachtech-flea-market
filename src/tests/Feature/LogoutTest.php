@@ -13,7 +13,6 @@ class LogoutTest extends TestCase
     /**
      * ログアウトができる
      */
-    #[Test]
     public function test_user_can_logout()
     {
         $user = User::factory()->create([
