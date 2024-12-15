@@ -16,15 +16,15 @@ class LogoutTest extends TestCase
     public function test_user_can_logout()
     {
         $user = User::factory()->create([
-            'name' => 'テストユーザー',
-            'email' => 'test@example.com',
+            'name' => 'logoutUser',
+            'email' => 'logoutUser@example.com',
             'password' => bcrypt('password123'),
             'email_verified_at' => now(), // テスト用にメール認証はスキップ
             'is_first_login' => false, // テスト用に初回ログイン時ユーザー設定をキャンセル
         ]);
 
         $response = $this->post('/login', [
-            'email' => 'test@example.com',
+            'email' => 'logoutUser@example.com',
             'password' => 'password123',
         ]);
 
