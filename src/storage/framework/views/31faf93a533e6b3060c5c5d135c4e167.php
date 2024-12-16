@@ -59,7 +59,7 @@ unset($__errorArgs, $__bag); ?>
                 <?php if(!empty($address['zip_code'])): ?>
                     <p>〒 <?php echo e($address['zip_code']); ?></p>
                 <?php endif; ?>
-                <p><?php echo e($shippingAddress ?? $address['address'] ?? ''); ?><p>
+                <p><?php echo e($shippingAddress ?? $address['address'] ?? ''); ?></p>
                 <p><?php echo e($shippingBuilding ?? $address['building'] ?? ''); ?></p>
             </div>
         </div>

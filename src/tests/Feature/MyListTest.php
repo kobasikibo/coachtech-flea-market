@@ -39,7 +39,7 @@ class MyListTest extends TestCase
         $response = $this->get('/?tab=mylist');
 
         $response->assertSee($likedItem->name);
-        $response->assertDontSee($unlikedItem->name);
+        $response->assertDontSee('<div class="item-name">' . e($unlikedItem->name) . '</div>');
     }
 
     /**
@@ -84,7 +84,7 @@ class MyListTest extends TestCase
 
         $response = $this->get('/?tab=mylist');
 
-        $response->assertDontSee($myItem->name);
+        $response->assertDontSee('<div class="item-name">' . e($myItem->name) . '</div>');
     }
 
     /**

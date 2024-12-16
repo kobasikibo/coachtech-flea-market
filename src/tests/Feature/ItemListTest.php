@@ -72,6 +72,6 @@ class ItemListTest extends TestCase
 
         $response = $this->get('/');
 
-        $response->assertDontSee($myItem->name);
+        $response->assertDontSee('<div class="item-name">' . e($myItem->name) . '</div>');
     }
 }

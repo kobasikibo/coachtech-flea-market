@@ -47,7 +47,7 @@
                 @if (!empty($address['zip_code']))
                     <p>〒 {{ $address['zip_code'] }}</p>
                 @endif
-                <p>{{ $shippingAddress ?? $address['address'] ?? '' }}<p>
+                <p>{{ $shippingAddress ?? $address['address'] ?? '' }}</p>
                 <p>{{ $shippingBuilding ?? $address['building'] ?? '' }}</p>
             </div>
         </div>

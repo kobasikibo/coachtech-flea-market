@@ -28,6 +28,7 @@ class CommentTest extends TestCase
 
         $commentContent = 'テストコメント';
 
+        // ユーザーにログインする
         $this->actingAs($user);
 
         $response = $this->post(route('comments.store', ['item_id' => $item->id]), [
