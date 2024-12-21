@@ -56,6 +56,9 @@ class ShippingAddressTest extends TestCase
         $response->assertSee($newAddress['building']);
     }
 
+    /**
+     * 購入した商品に送付先住所が紐づいて登録される
+     */
     public function test_address_is_stored_in_purchase()
     {
         // ユーザーにログインする
