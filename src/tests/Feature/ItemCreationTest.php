@@ -10,6 +10,7 @@ use Database\Seeders\DatabaseSeeder;
 use Tests\TestCase;
 use Illuminate\Http\UploadedFile;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\File;
 
 class ItemCreationTest extends TestCase
 {
@@ -76,5 +77,12 @@ class ItemCreationTest extends TestCase
         }
 
         $this->assertTrue(\Storage::disk('public')->exists("items/{$image->hashName()}"));
+    }
+
+    protected function tearDown(): void
+    {
+        File::deleteDirectory(storage_path('framework/testing/disks/public/items'));
+
+        parent::tearDown();
     }
 }
