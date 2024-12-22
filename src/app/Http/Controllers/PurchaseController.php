@@ -29,31 +29,35 @@ class PurchaseController
         return view('item.purchase', compact('item', 'address'));
     }
 
+    protected $stripeService;
+
+    public function __construct(StripeService $stripeService)
+    {
+        $this->stripeService = $stripeService;
+    }
+
     public function store(PurchaseRequest $request)
     {
         $validated = $request->validated();
         $item = Item::findOrFail($request->item_id);
         $user = Auth::user();
 
-        $shippingZipCode = session('shipping_zip_code', $user->address->zip_code ?? '');
-        $shippingAddress = session('shipping_address', $user->address->address ?? '');
-        $shippingBuilding = session('shipping_building', $user->address->building ?? '');
+        $shippingAddress = $this->getAddressFromSessionOrUser($user);
 
-        Purchase::create([
+        $purchase = Purchase::create([
             'user_id' => $user->id,
             'item_id' => $item->id,
             'payment_method' => $validated['payment_method'],
-            'shipping_zip_code' => $shippingZipCode,
-            'shipping_address' => $shippingAddress,
-            'shipping_building' => $shippingBuilding,
+            'shipping_zip_code' => $shippingAddress['zip_code'],
+            'shipping_address' => $shippingAddress['address'],
+            'shipping_building' => $shippingAddress['building'],
         ]);
 
         $item->is_purchased = true;
         $item->save();
-
         session()->forget(['shipping_zip_code', 'shipping_address', 'shipping_building']);
 
-        return redirect('/');
+        return redirect($this->stripeService->createCheckoutSession($purchase, $item, $validated['payment_method']));
     }
 
     public function editAddress($item_id)
