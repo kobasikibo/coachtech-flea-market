@@ -50,7 +50,7 @@ php artisan db:seed
 - MySQL9.0.1
 
 ## ER図
-![ER](src/database/diagrams/er_diagram2.svg)
+![ER](src/database/diagrams/er_diagram.png)
 
 ## URL
 - 開発環境：http://localhost/

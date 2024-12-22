@@ -81,7 +81,7 @@ class ItemCreationTest extends TestCase
 
     protected function tearDown(): void
     {
-        File::deleteDirectory(storage_path('framework/testing/disks/public/items'));
+        File::deleteDirectory(storage_path('framework/testing'));
 
         parent::tearDown();
     }
