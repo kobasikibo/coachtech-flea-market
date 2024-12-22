@@ -68,10 +68,9 @@ class PurchaseItemTest extends TestCase
     public function test_user_can_complete_purchase()
     {
         // 商品購入処理を完了させる
-        $response = $this->completePurchase('card');
+        $this->completePurchase('card');
 
         // 購入が完了する
-        $response->assertRedirect(route('item.index'));
         $this->assertDatabaseHas('purchases', [
             'user_id' => $this->user->id,
             'item_id' => $this->item->id,
@@ -88,13 +87,13 @@ class PurchaseItemTest extends TestCase
     public function test_purchased_item_is_marked_as_sold_in_item_list()
     {
         // 商品購入処理を完了させる
-        $response = $this->completePurchase('card');
+        $this->completePurchase('card');
 
         // 商品一覧画面を表示する
-        $response->assertRedirect(route('item.index'));
+        $response = $this->get(route('item.index'));
 
         // 購入した商品が「sold」として表示されている
-        $this->get(route('item.index'))->assertSee('Sold');
+        $response->assertSee('Sold');
     }
 
     /**

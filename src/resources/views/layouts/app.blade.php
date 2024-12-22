@@ -14,16 +14,16 @@
 
 <body>
     <header class="header">
-        <div class="header__inner">
-            <div class="header__container">
-                <a class="header__logo" href="/">
+        <div class="header-inner">
+            <div class="header-container">
+                <a class="header-logo" href="/">
                     <img src="{{ asset('images/logo.svg') }}" alt="coachtechフリマのロゴ">
                 </a>
             </div>
 
             @if (!in_array(request()->route()->getName(), ['login', 'register']))
-                <div class="header__container">
-                    <div class="header__center">
+                <div class="header-container">
+                    <div class="header-center">
                         <form class="search-form" action="{{ route('item.index') }}" method="GET">
                             <input type="hidden" name="tab" value="{{ request()->query('tab', 'recommend') }}">
                             <input type="text" name="query" value="{{ request()->get('query', '') }}" placeholder="なにをお探しですか？">
@@ -31,8 +31,8 @@
                     </div>
                 </div>
 
-                <div class="header__container">
-                    <div class="header__links">
+                <div class="header-container">
+                    <div class="header-links">
                         @auth
                             <form action="{{ route('logout') }}" method="POST" class="logout-form">
                                 @csrf

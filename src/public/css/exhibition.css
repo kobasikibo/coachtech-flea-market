@@ -71,7 +71,6 @@
 
 .item.sold .sold-label {
     display: flex;
-    cursor: not-allowed;
 }
 
 .item-name {

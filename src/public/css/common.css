@@ -11,23 +11,23 @@ body {
     padding: 0.6%;
 }
 
-.header__inner {
+.header-inner {
     display: flex;
     width: 100%;
     align-items: center;
 }
 
-.header__container {
+.header-container {
     display: flex;
     padding-left: 2vw;
 }
 
-.header__logo {
+.header-logo {
     width: 22vw;
     margin-right: 5vw;
 }
 
-.header__logo img {
+.header-logo img {
     width: 100%;
     height: auto;
 }
@@ -55,7 +55,7 @@ body {
     color: transparent;
 }
 
-.header__links {
+.header-links {
     display: flex;
     align-items: center;
 }
