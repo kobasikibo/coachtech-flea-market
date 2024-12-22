@@ -24,8 +24,8 @@ class LikeItemTest extends TestCase
     public function test_item_can_be_liked_and_like_count_increases()
     {
         $user = User::factory()->create([
-            'name' => 'likeUser',
-            'email' => 'likeUser@example.com',
+            'name' => 'LikeItem',
+            'email' => 'likeitem@example.com',
             'password' => bcrypt('password123'),
             'email_verified_at' => now(),
         ]);
@@ -50,8 +50,8 @@ class LikeItemTest extends TestCase
     public function test_like_icon_changes_color_when_item_is_liked()
     {
         $user = User::factory()->create([
-            'name' => 'likeUser',
-            'email' => 'likeUser@example.com',
+            'name' => 'LikeItem',
+            'email' => 'likeitem@example.com',
             'password' => bcrypt('password123'),
             'email_verified_at' => now(),
         ]);
@@ -75,8 +75,8 @@ class LikeItemTest extends TestCase
     public function test_item_like_can_be_removed()
     {
         $user = User::factory()->create([
-            'name' => 'likeUser',
-            'email' => 'likeUser@example.com',
+            'name' => 'LikeItem',
+            'email' => 'likeitem@example.com',
             'password' => bcrypt('password123'),
             'email_verified_at' => now(),
         ]);

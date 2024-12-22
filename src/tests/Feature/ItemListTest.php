@@ -38,7 +38,7 @@ class ItemListTest extends TestCase
     {
         $user = User::factory()->create([
             'name' => 'ItemList',
-            'email' => 'ItemList@example.com',
+            'email' => 'itemlist@example.com',
             'password' => bcrypt('password123'),
             'email_verified_at' => now(),  // テスト用にメール認証はスキップ
         ]);
@@ -59,7 +59,7 @@ class ItemListTest extends TestCase
     {
         $user = User::factory()->create([
             'name' => 'ItemList',
-            'email' => 'ItemList@example.com',
+            'email' => 'itemlist@example.com',
             'password' => bcrypt('password123'),
             'email_verified_at' => now(),  // テスト用にメール認証はスキップ
         ]);

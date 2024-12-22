@@ -16,7 +16,7 @@ class RegistrationTest extends TestCase
     {
         // 名前を入力せずに他の必要項目を入力する
         $response = $this->post('/register', [
-            'email' => 'test@example.com',
+            'email' => 'registration@example.com',
             'password' => 'password123',
             'password_confirmation' => 'password123',
         ]);
@@ -32,7 +32,7 @@ class RegistrationTest extends TestCase
     {
         // メールアドレスを入力せずに他の必要項目を入力する
         $response = $this->post('/register', [
-            'name' => 'テストユーザー',
+            'name' => 'Registration',
             'password' => 'password123',
             'password_confirmation' => 'password123',
         ]);
@@ -48,8 +48,8 @@ class RegistrationTest extends TestCase
     {
         // パスワードを入力せずに他の必要項目を入力する
         $response = $this->post('/register', [
-            'name' => 'テストユーザー',
-            'email' => 'test@example.com',
+            'name' => 'Registration',
+            'email' => 'registration@example.com',
         ]);
 
         // 「パスワードを入力してください」というバリデーションメッセージが表示される
@@ -63,8 +63,8 @@ class RegistrationTest extends TestCase
     {
         // 7文字以下のパスワードと他の必要項目を入力する
         $response = $this->post('/register', [
-            'name' => 'テストユーザー',
-            'email' => 'test@example.com',
+            'name' => 'Registration',
+            'email' => 'registration@example.com',
             'password' => 'short',
             'password_confirmation' => 'short',
         ]);
@@ -80,8 +80,8 @@ class RegistrationTest extends TestCase
     {
         // 確認用パスワードと異なるパスワードを入力し、他の必要項目も入力する
         $response = $this->post('/register', [
-            'name' => 'テストユーザー',
-            'email' => 'test@example.com',
+            'name' => 'Registration',
+            'email' => 'registration@example.com',
             'password' => 'password123',
             'password_confirmation' => 'different123',
         ]);
@@ -97,8 +97,8 @@ class RegistrationTest extends TestCase
     {
         // 全ての必要項目を正しく入力する
         $response = $this->post('/register', [
-            'name' => 'テストユーザー',
-            'email' => 'test@example.com',
+            'name' => 'Registration',
+            'email' => 'registration@example.com',
             'password' => 'password123',
             'password_confirmation' => 'password123',
         ]);
@@ -107,8 +107,8 @@ class RegistrationTest extends TestCase
         $response->assertRedirect(route('login'));
 
         $this->assertDatabaseHas('users', [
-            'name' => 'テストユーザー',
-            'email' => 'test@example.com',
+            'name' => 'Registration',
+            'email' => 'registration@example.com',
         ]);
     }
 }

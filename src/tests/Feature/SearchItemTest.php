@@ -41,7 +41,7 @@ class SearchItemTest extends TestCase
     {
         $user = User::factory()->create([
             'name' => 'SearchItem',
-            'email' => 'SearchItem@example.com',
+            'email' => 'searchitem@example.com',
             'password' => bcrypt('password123'),
             'email_verified_at' => now(),  // テスト用にメール認証はスキップ
         ]);

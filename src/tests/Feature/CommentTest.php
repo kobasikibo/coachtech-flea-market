@@ -17,8 +17,8 @@ class CommentTest extends TestCase
     public function test_authenticated_user_can_send_comment()
     {
         $user = User::factory()->create([
-            'name' => 'commentUser',
-            'email' => 'commentUser@example.com',
+            'name' => 'Comment',
+            'email' => 'comment@example.com',
             'password' => bcrypt('password123'),
             'email_verified_at' => now(),
         ]);
@@ -53,8 +53,8 @@ class CommentTest extends TestCase
     public function test_guest_user_cannot_send_comment()
     {
         $user = User::factory()->create([
-            'name' => 'commentUser',
-            'email' => 'commentUser@example.com',
+            'name' => 'Comment',
+            'email' => 'comment@example.com',
             'password' => bcrypt('password123'),
             'email_verified_at' => now(),
         ]);
@@ -75,8 +75,8 @@ class CommentTest extends TestCase
     public function test_validation_message_is_displayed_when_comment_is_empty()
     {
         $user = User::factory()->create([
-            'name' => 'commentUser',
-            'email' => 'commentUser@example.com',
+            'name' => 'Comment',
+            'email' => 'comment@example.com',
             'password' => bcrypt('password123'),
             'email_verified_at' => now(),
         ]);
@@ -97,8 +97,8 @@ class CommentTest extends TestCase
     public function test_validation_message_is_displayed_when_comment_is_too_long()
     {
         $user = User::factory()->create([
-            'name' => 'commentUser',
-            'email' => 'commentUser@example.com',
+            'name' => 'Comment',
+            'email' => 'comment@example.com',
             'password' => bcrypt('password123'),
             'email_verified_at' => now(),
         ]);

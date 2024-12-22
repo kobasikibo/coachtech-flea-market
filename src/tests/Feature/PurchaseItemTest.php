@@ -21,8 +21,8 @@ class PurchaseItemTest extends TestCase
 
         $this->seed(DatabaseSeeder::class);
         $this->user = User::factory()->create([
-            'name' => 'PurchaseUser',
-            'email' => 'purchaseuser@example.com',
+            'name' => 'PurchaseItem',
+            'email' => 'purchaseitem@example.com',
             'password' => bcrypt('password123'),
             'email_verified_at' => now(),
         ]);

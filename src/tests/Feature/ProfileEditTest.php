@@ -24,8 +24,8 @@ class ProfileEditTest extends TestCase
         ]);
 
         $this->user = User::factory()->create([
-            'name' => 'Test User',
-            'email' => 'testuser@example.com',
+            'name' => 'ProfileEdit',
+            'email' => 'profileedit@example.com',
             'profile_image' => 'path/to/profile/image.jpg',
             'password' => bcrypt('password123'),
             'address_id' => $address->id,

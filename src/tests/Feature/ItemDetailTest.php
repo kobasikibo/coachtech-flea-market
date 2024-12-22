@@ -27,7 +27,7 @@ class ItemDetailTest extends TestCase
     {
         $user = User::factory()->create([
             'name' => 'ItemDetail',
-            'email' => 'ItemDetail@example.com',
+            'email' => 'itemdetail@example.com',
             'password' => bcrypt('password123'),
             'email_verified_at' => now(),  // テスト用にメール認証はスキップ
         ]);

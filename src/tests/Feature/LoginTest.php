@@ -28,7 +28,7 @@ class LoginTest extends TestCase
     public function test_password_is_required()
     {
         $response = $this->post('/login', [
-            'email' => 'loginUser@example.com',
+            'email' => 'login@example.com',
         ]);
 
         $response->assertSessionHasErrors(['password' => 'パスワードを入力してください']);
@@ -53,14 +53,14 @@ class LoginTest extends TestCase
     public function test_successful_login()
     {
         $user = User::factory()->create([
-            'name' => 'loginUser',
-            'email' => 'loginUser@example.com',
+            'name' => 'Login',
+            'email' => 'login@example.com',
             'password' => bcrypt('password123'),
             'email_verified_at' => now(),  // テスト用にメール認証はスキップ
         ]);
 
         $response = $this->post('/login', [
-            'email' => 'loginUser@example.com',
+            'email' => 'login@example.com',
             'password' => 'password123',
         ]);
 

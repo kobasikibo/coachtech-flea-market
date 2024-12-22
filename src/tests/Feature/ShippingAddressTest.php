@@ -22,8 +22,8 @@ class ShippingAddressTest extends TestCase
 
         $this->seed(DatabaseSeeder::class);
         $this->user = User::factory()->create([
-            'name' => 'AddressUser',
-            'email' => 'addressuser@example.com',
+            'name' => 'ShippingAddress',
+            'email' => 'shippingaddress@example.com',
             'password' => bcrypt('password123'),
             'email_verified_at' => now(),
         ]);
