@@ -87,7 +87,7 @@ php artisan migrate --seed
 2. 画面右上の「Sign up」ボタンをクリックして、アカウントを作成
 3. Stripeダッシュボードにログイン後、左側メニューから「Developers」を選択し、「API keys」をクリック
 4. 公開可能なキー（Publishable Key）とシークレットキー（Secret Key）をコピー
-5. .envに以下の環境変数を追加（your-public-stripe-key-here と your-secret-stripe-key-here は実際のAPIキーに）
+5. .envに以下の環境変数を追加（your-public-stripe-key-here と your-secret-stripe-key-here は実際のAPIキーを入力）
 ``` text
 STRIPE_KEY=your-public-stripe-key-here
 STRIPE_SECRET=your-secret-stripe-key-here
