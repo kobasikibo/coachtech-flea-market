@@ -2,10 +2,6 @@
 
 ## 環境構築
 
-**必要な前提条件**
-1. Dockerがインストールされていること
-
-**Dockerビルド**
 1. `git clone git@github.com:kobasikibo/coachtech-flea-market.git`
 2. DockerDesktopアプリを立ち上げる
 3. `docker compose up -d --build`
@@ -82,8 +78,12 @@ php artisan key:generate
 php artisan migrate --seed
 ```
 
+**Fortifyの設定**
+1. `docker compose exec php sh`
+2. `composer require laravel/fortify`
+
 **Stripeの設定**
-1. Stripeの公式サイト（https://stripe.com）にアクセス
+1. Stripeの公式サイト（https://stripe.com） にアクセス
 2. 画面右上の「Sign up」ボタンをクリックして、アカウントを作成
 3. Stripeダッシュボードにログイン後、左側メニューから「Developers」を選択し、「API keys」をクリック
 4. 公開可能なキー（Publishable Key）とシークレットキー（Secret Key）をコピー
